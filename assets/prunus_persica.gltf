@@ -1,0 +1,535 @@
+{
+    "asset": {
+        "generator": "FBX2glTF v0.9.7",
+        "version": "2.0"
+    },
+    "scene": 0,
+    "buffers": [
+        {
+            "byteLength": 35658588,
+            "uri": "buffer.bin"
+        }
+    ],
+    "bufferViews": [
+        {
+            "buffer": 0,
+            "byteLength": 45354,
+            "byteOffset": 0,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 52836,
+            "byteOffset": 45356,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 52836,
+            "byteOffset": 98192,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 35224,
+            "byteOffset": 151028,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 1176240,
+            "byteOffset": 186252,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 847488,
+            "byteOffset": 1362492,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 847488,
+            "byteOffset": 2209980,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 564992,
+            "byteOffset": 3057468,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 3784608,
+            "byteOffset": 3622460,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 4579680,
+            "byteOffset": 7407068,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 4579680,
+            "byteOffset": 11986748,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 3053120,
+            "byteOffset": 16566428,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 2532480,
+            "byteOffset": 19619548,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 5064960,
+            "byteOffset": 22152028,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 5064960,
+            "byteOffset": 27216988,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 3376640,
+            "byteOffset": 32281948,
+            "target": 34962
+        }
+    ],
+    "scenes": [
+        {
+            "name": "Root Scene",
+            "nodes": [
+                0
+            ]
+        }
+    ],
+    "accessors": [
+        {
+            "componentType": 5123,
+            "type": "SCALAR",
+            "count": 22677,
+            "bufferView": 0,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 4403,
+            "bufferView": 1,
+            "byteOffset": 0,
+            "min": [
+                -0.180000647902489,
+                -0.225762382149696,
+                -0.000883059983607382
+            ],
+            "max": [
+                0.253623068332672,
+                0.165922671556473,
+                0.504592180252075
+            ]
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 4403,
+            "bufferView": 2,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC2",
+            "count": 4403,
+            "bufferView": 3,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5125,
+            "type": "SCALAR",
+            "count": 294060,
+            "bufferView": 4,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 70624,
+            "bufferView": 5,
+            "byteOffset": 0,
+            "min": [
+                -0.238293826580048,
+                -0.267224580049515,
+                0.183657452464104
+            ],
+            "max": [
+                0.31172302365303,
+                0.21335181593895,
+                0.527687549591064
+            ]
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 70624,
+            "bufferView": 6,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC2",
+            "count": 70624,
+            "bufferView": 7,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5125,
+            "type": "SCALAR",
+            "count": 946152,
+            "bufferView": 8,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 381640,
+            "bufferView": 9,
+            "byteOffset": 0,
+            "min": [
+                -0.243619814515114,
+                -0.275041550397873,
+                0.175856351852417
+            ],
+            "max": [
+                0.318020164966583,
+                0.22050353884697,
+                0.531086683273315
+            ]
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 381640,
+            "bufferView": 10,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC2",
+            "count": 381640,
+            "bufferView": 11,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5125,
+            "type": "SCALAR",
+            "count": 633120,
+            "bufferView": 12,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 422080,
+            "bufferView": 13,
+            "byteOffset": 0,
+            "min": [
+                -0.243894502520561,
+                -0.272942036390305,
+                0.178498670458794
+            ],
+            "max": [
+                0.318113714456558,
+                0.21937969326973,
+                0.533683240413666
+            ]
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC3",
+            "count": 422080,
+            "bufferView": 14,
+            "byteOffset": 0
+        },
+        {
+            "componentType": 5126,
+            "type": "VEC2",
+            "count": 422080,
+            "bufferView": 15,
+            "byteOffset": 0
+        }
+    ],
+    "images": [
+        {
+            "name": "prunus persica bark 1 normals.jpg",
+            "uri": "prunus persica bark 1 normals.jpg"
+        },
+        {
+            "name": "prunus persica bark 1 color d.jpg",
+            "uri": "prunus persica bark 1 color d.jpg"
+        },
+        {
+            "name": "prunus persica bark 1 color c.jpg",
+            "uri": "prunus persica bark 1 color c.jpg"
+        },
+        {
+            "name": "prunus persica leaf 1 normals.jpg",
+            "uri": "prunus persica leaf 1 normals.jpg"
+        },
+        {
+            "name": "prunus persica leaf 1 color a.jpg",
+            "uri": "prunus persica leaf 1 color a.jpg"
+        },
+        {
+            "name": "prunus persica flower b1.jpg",
+            "uri": "prunus persica flower b1.jpg"
+        }
+    ],
+    "samplers": [
+        {}
+    ],
+    "textures": [
+        {
+            "name": "normalmap_texture",
+            "sampler": 0,
+            "source": 0
+        },
+        {
+            "name": "base_color_texture",
+            "sampler": 0,
+            "source": 1
+        },
+        {
+            "name": "base_color_texture",
+            "sampler": 0,
+            "source": 2
+        },
+        {
+            "name": "normalmap_texture",
+            "sampler": 0,
+            "source": 3
+        },
+        {
+            "name": "base_color_texture",
+            "sampler": 0,
+            "source": 4
+        },
+        {
+            "name": "base_color_texture",
+            "sampler": 0,
+            "source": 5
+        }
+    ],
+    "materials": [
+        {
+            "name": "Material__0",
+            "alphaMode": "OPAQUE",
+            "extras": {
+                "fromFBX": {
+                    "shadingModel": "Phong",
+                    "isTruePBR": false
+                }
+            },
+            "normalTexture": {
+                "index": 0,
+                "texCoord": 0
+            },
+            "pbrMetallicRoughness": {
+                "baseColorTexture": {
+                    "index": 1,
+                    "texCoord": 0
+                },
+                "baseColorFactor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "metallicFactor": 0.400000005960464,
+                "roughnessFactor": 0.801783740520477
+            }
+        },
+        {
+            "name": "Material__1",
+            "alphaMode": "OPAQUE",
+            "extras": {
+                "fromFBX": {
+                    "shadingModel": "Phong",
+                    "isTruePBR": false
+                }
+            },
+            "normalTexture": {
+                "index": 0,
+                "texCoord": 0
+            },
+            "pbrMetallicRoughness": {
+                "baseColorTexture": {
+                    "index": 2,
+                    "texCoord": 0
+                },
+                "baseColorFactor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "metallicFactor": 0.400000005960464,
+                "roughnessFactor": 0.801783740520477
+            }
+        },
+        {
+            "name": "Material__3",
+            "alphaMode": "OPAQUE",
+            "extras": {
+                "fromFBX": {
+                    "shadingModel": "Phong",
+                    "isTruePBR": false
+                }
+            },
+            "normalTexture": {
+                "index": 3,
+                "texCoord": 0
+            },
+            "pbrMetallicRoughness": {
+                "baseColorTexture": {
+                    "index": 4,
+                    "texCoord": 0
+                },
+                "baseColorFactor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "metallicFactor": 0.400000005960464,
+                "roughnessFactor": 0.801783740520477
+            }
+        },
+        {
+            "name": "Material__5",
+            "alphaMode": "OPAQUE",
+            "extras": {
+                "fromFBX": {
+                    "shadingModel": "Phong",
+                    "isTruePBR": false
+                }
+            },
+            "pbrMetallicRoughness": {
+                "baseColorTexture": {
+                    "index": 5,
+                    "texCoord": 0
+                },
+                "baseColorFactor": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "metallicFactor": 0.400000005960464,
+                "roughnessFactor": 0.801783740520477
+            }
+        }
+    ],
+    "meshes": [
+        {
+            "name": "Prunus_Persica_v01_m001",
+            "primitives": [
+                {
+                    "material": 0,
+                    "mode": 4,
+                    "attributes": {
+                        "NORMAL": 2,
+                        "POSITION": 1,
+                        "TEXCOORD_0": 3
+                    },
+                    "indices": 0
+                },
+                {
+                    "material": 1,
+                    "mode": 4,
+                    "attributes": {
+                        "NORMAL": 6,
+                        "POSITION": 5,
+                        "TEXCOORD_0": 7
+                    },
+                    "indices": 4
+                },
+                {
+                    "material": 2,
+                    "mode": 4,
+                    "attributes": {
+                        "NORMAL": 10,
+                        "POSITION": 9,
+                        "TEXCOORD_0": 11
+                    },
+                    "indices": 8
+                },
+                {
+                    "material": 3,
+                    "mode": 4,
+                    "attributes": {
+                        "NORMAL": 14,
+                        "POSITION": 13,
+                        "TEXCOORD_0": 15
+                    },
+                    "indices": 12
+                }
+            ]
+        }
+    ],
+    "nodes": [
+        {
+            "name": "RootNode",
+            "translation": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "children": [
+                1
+            ]
+        },
+        {
+            "name": "Prunus_Persica_v01_m001",
+            "translation": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "rotation": [
+                -0.707106828689575,
+                0.0,
+                0.0,
+                0.707106709480286
+            ],
+            "scale": [
+                100.0,
+                100.0,
+                100.0
+            ],
+            "mesh": 0
+        }
+    ]
+}
