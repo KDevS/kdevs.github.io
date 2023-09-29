@@ -3,30 +3,30 @@
 <!--<script src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>-->
 <script src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js'></script>
 
-<script>
-    window.onload = function() {
-        AFRAME.registerComponent('videohandler', {
-            init: function () {
-                var marker = this.el;
+<!-- <script> -->
+    <!-- window.onload = function() { -->
+        <!-- AFRAME.registerComponent('videohandler', { -->
+            <!-- init: function () { -->
+                <!-- var marker = this.el; -->
 
-                <!-- this.vid = document.querySelector("#vid"); -->
-                this.model = document.querySelector("#model");
+                <!-- <!-- this.vid = document.querySelector("#vid"); --> -->
+                <!-- this.model = document.querySelector("#model"); -->
 
-                marker.addEventListener('markerFound', function () {
-                    <!-- this.vid.play(); -->
-                    this.model.object3D.position.set((800 / 72 * 2.54 * 10) / 2.0), (450 / 72 * 2.54 * 10) / 2.0), -200);
-                    <!-- model.position.x = (800 / 72 * 2.54 * 10) / 2.0; -->
-					<!-- model.position.y = (450 / 72 * 2.54 * 10) / 2.0; -->
-                }.bind(this));
+                <!-- marker.addEventListener('markerFound', function () { -->
+                    <!-- <!-- this.vid.play(); --> -->
+                    <!-- this.model.object3D.position.set((800 / 72 * 2.54 * 10) / 2.0), (450 / 72 * 2.54 * 10) / 2.0), -200); -->
+                    <!-- <!-- model.position.x = (800 / 72 * 2.54 * 10) / 2.0; --> -->
+					<!-- <!-- model.position.y = (450 / 72 * 2.54 * 10) / 2.0; --> -->
+                <!-- }.bind(this)); -->
 
-				<!-- marker.addEventListener('markerLost', function() { -->
-					<!-- this.vid.pause(); -->
-					<!-- this.vid.currentTime = 0; -->
-				<!-- }.bind(this)); -->
-            }
-        });
-    };
-</script>
+				<!-- <!-- marker.addEventListener('markerLost', function() { --> -->
+					<!-- <!-- this.vid.pause(); --> -->
+					<!-- <!-- this.vid.currentTime = 0; --> -->
+				<!-- <!-- }.bind(this)); --> -->
+            <!-- } -->
+        <!-- }); -->
+    <!-- }; -->
+<!-- </script> -->
 
 <style>
     .arjs-loader {
@@ -72,8 +72,8 @@
 		<a-entity
 			id="model"
 			gltf-model="assets/BoomBox.gltf"
-			scale="5 5 5"
-			position="150 300 0"
+			scale="100 100 100"
+			position="150 300 -100"
 		>
       </a-entity>
             <!-- <a-video -->
