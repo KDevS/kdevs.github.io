@@ -5,9 +5,10 @@
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 	<script>
     window.onload = function() {
-        AFRAME.registerComponent('videohandler', {
+        <!-- AFRAME.registerComponent('videohandler', { -->
             init: function () {
-                var marker = this.el;
+                <!-- var marker = this.el; -->
+                var marker = document.querySelector("a-marker");
 
                 this.vid = document.querySelector("#vid");
 
@@ -20,7 +21,7 @@
 			this.vid.currentTime = 0;
 		}.bind(this));
             }
-        });
+        <!-- }); -->
     };
 </script>
     <body style="margin : 0px; overflow: hidden;">
