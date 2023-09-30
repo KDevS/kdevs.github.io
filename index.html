@@ -26,29 +26,29 @@
 <!-- </script> -->
     <body style="margin : 0px; overflow: hidden;">
         <a-scene embedded arjs>
-		<!-- <a-assets> -->
-            <!-- <video src="assets/ar_video_tree_hd.mp4" -->
-                <!-- preload="auto" id="vid" response-type="arraybuffer" loop="true" -->
-                <!-- crossorigin webkit-playsinline autoplay="true" muted playsinline> -->
-            <!-- </video> -->
-        <!-- </a-assets> -->
+		<a-assets>
+            <video src="assets/ar_video_tree_hd.mp4"
+                preload="auto" id="vid" response-type="arraybuffer" loop="true"
+                crossorigin webkit-playsinline autoplay="true" muted playsinline>
+            </video>
+        </a-assets>
         <a-marker preset="hiro">
             <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
-            <a-entity
-            position="0 0 0"
-			rotation='90 0 180'
-            scale="0.03 0.03 0.03"
-            gltf-model="assets/prunus_persica.gltf"
-            ></a-entity>
-			<!-- <a-video -->
-                <!-- src="#vid" -->
-                <!-- position='0 0 -100' -->
-                <!-- rotation='90 0 180' -->
-				<!-- <!-- scale='0.03 0.03 0.03' --> -->
-                <!-- width='300' -->
-                <!-- height='175' -->
-                <!-- > -->
-            <!-- </a-video> -->
+            <!-- <a-entity -->
+            <!-- position="0 0 0" -->
+			<!-- rotation='90 0 180' -->
+            <!-- scale="0.03 0.03 0.03" -->
+            <!-- gltf-model="assets/prunus_persica.gltf" -->
+            <!-- ></a-entity> -->
+			<a-video
+                src="#vid"
+                position='0 0 -100'
+                rotation='90 0 180'
+				scale='0.03 0.03 0.03'
+                width='300'
+                height='175'
+                >
+            </a-video>
         </a-marker>
         <a-entity camera></a-entity>
         </a-scene>
