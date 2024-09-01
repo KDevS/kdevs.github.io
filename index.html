@@ -1,104 +1,66 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-  <!-- we import arjs version without NFT but with marker + location based support -->
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-  <script>
-    var markerFound = 0;
-    AFRAME.registerComponent('button', {
-        init: function ()
-        {
-          var elem = document.documentElement;
-          var marker = document.querySelector("#marker");
-          <!-- var fullbutton = document.querySelector("#fullscreen"); -->
-          var Video_0 = document.querySelector("#Video_Asset_0");
-          var button = document.querySelector("#mutebutton");
-          button.hidden = true;
-          Video_0.pause();
+<html lang="en">
+  <head>
+    <title>WebAR Gladiador</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-          marker.addEventListener("markerFound", function (evt) {
-            markerFound = 1;
-            button.hidden = false;
-            //Video_0.play();  //if video should start immediently on marker detection
-          });
+    <link rel="stylesheet" href="./styles.css">
+    
+    <!-- The following libraries and polyfills are recommended to maximize browser support -->
+    <!-- NOTE: you must adjust the paths as appropriate for your project -->
+    
+    <!-- 🚨 REQUIRED: Web Components polyfill to support Edge and Firefox < 63 -->
+<!--     <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.1.3/webcomponents-loader.js"></script> -->
 
-          marker.addEventListener("markerLost", function (evt) {
-            markerFound = 0;
-            Video_0.pause();
-            button.hidden = true;
-          });
+    <!-- 💁 OPTIONAL: Intersection Observer polyfill for better performance in Safari and IE11 -->
+<!--     <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script> -->
 
-          button.addEventListener("click", function(evt){
-            console.log("button clicked")
-            if(Video_0.muted==true){
-              button.innerHTML="Pause";
-              Video_0.muted=false;
-              Video_0.play();
-            }else{
-              button.innerHTML="Play";
-              Video_0.muted=true;
-              Video_0.pause();
-            }
-          });
+    <!-- 💁 OPTIONAL: Resize Observer polyfill improves resize behavior in non-Chrome browsers -->
+<!--     <script src="https://unpkg.com/resize-observer-polyfill@1.5.0/dist/ResizeObserver.js"></script> -->
+    
+    <!-- 💁 OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
+    <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
 
-          <!-- fullbutton.addEventListener("click", -->
-            <!-- function (evt){ -->
-              <!-- if (fullscreen == 0) { -->
-                <!-- if (elem.requestFullscreen) { -->
-                    <!-- elem.requestFullscreen(); -->
-                <!-- } else if (elem.mozRequestFullScreen) { -->
-                    <!-- /* Firefox */ -->
-                    <!-- elem.mozRequestFullScreen(); -->
-                <!-- } else if (elem.webkitRequestFullscreen) { -->
-                    <!-- /* Chrome, Safari and Opera */ -->
-                    <!-- elem.webkitRequestFullscreen(); -->
-                <!-- } else if (elem.msRequestFullscreen) { -->
-                    <!-- /* IE/Edge */ -->
-                    <!-- elem.msRequestFullscreen(); -->
-                <!-- } -->
-                <!-- fullbutton.setAttribute("src", "vendor/exit_fullscreen.png"); -->
-                <!-- fullscreen = 1; -->
-              <!-- } else { -->
-                <!-- if (document.exitFullscreen) { -->
-                    <!-- document.exitFullscreen(); -->
-                <!-- } else if (document.webkitExitFullscreen) { -->
-                    <!-- document.webkitExitFullscreen(); -->
-                <!-- } else if (document.mozCancelFullScreen) { -->
-                    <!-- document.mozCancelFullScreen(); -->
-                <!-- } else if (document.msExitFullscreen) { -->
-                    <!-- document.msExitFullscreen(); -->
-                <!-- } -->
-                <!-- fullbutton.setAttribute("src", "vendor/fullscreen.png"); -->
-                <!-- fullscreen = 0; -->
-              <!-- } -->
-            <!-- }); -->
-        },
-        tick: function (totalTime, deltaTime)
-        {
-            var dTime = deltaTime / 1000;
-            if (markerFound == 1) {
-            }
-        }
-      });
-  </script>
-</head>
-<body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
-  <div style='position: absolute; bottom: 10px; right: 30px; width:100%; text-align: center; z-index: 1;'>
-    <button id="mutebutton" style='position: absolute; bottom: 10px' hidden>Play</button>
+  </head> 
+<body>
+  <div class="row">
+  <div id="card">
+    <!-- All you need to put beautiful, interactive 3D content on your site: -->
+    <model-viewer src="./assets/gladiador.glb"
+                  ios-src="./assets/gladiador.usdz"
+                  poster="./assets/gladiador.png"
+                  alt="A 3D model of an Gladiador"
+                  shadow-intensity="1"
+                  camera-controls
+                  auto-rotate ar>
+    </model-viewer>
+    <section class="attribution">
+      <span>
+        <h1>Gladiador</h1>
+        <span>By <a href="https://sketchfab.com/3d-models/gladiador-874fc7e11d674f51a4dc2082d29c9b9a" target="_blank">SketchFab</a></span>
+        <br>
+        <span>Demo by<a href="https://www.antdevelopers.com" target="_blank">ANT Developers</a></span>
+      </span>
+      <a class="cc" href="https://creativecommons.org/licenses/by/2.0/" target="_blank">
+        <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg">
+        <img src="https://mirrors.creativecommons.org/presskit/icons/by.svg">
+      </a>
+    </section>  
   </div>
-  <!-- <div style='position: absolute; bottom: 5px; left: 30px; width:100%; text-align: right; z-index: 1;'> -->
-    <!-- <input type="image" id="fullscreen" src="vendor/fullscreen.png" style='position: absolute; bottom: 0px; right: 35px;'></input> -->
-  <!-- </div> -->
-  <a-scene embedded arjs="debugUIEnabled: false; sourceType: webcam" vr-mode-ui="enabled: false">
-    <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
-    <a-assets>
-      <video id="Video_Asset_0" autoplay="false" loop crossorigin="anonymous" src="assets/ar_video_tree_hd.mp4" webkit-playsinline playsinline controls muted></video>
-    </a-assets>
-    <a-marker id="marker" preset="hiro" emitevents="true" button>
-      <a-video src="#Video_Asset_0" id="Video_0" class="intersectable" width="1" height="1" position="0 0 0" rotation="90 0 180" color="#FFFFFF" transparent=False></a-video>
-    </a-marker>
-    <a-entity camera></a-entity>
-  </a-scene>
+  </div>
+
+  <!-- 💁 Include both scripts below to support all browsers! -->
+
+  <!-- Loads <model-viewer> for modern browsers: -->
+  <script type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+  </script>
+
+  <!-- Loads <model-viewer> for old browsers like IE11: -->
+  <script nomodule
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js">
+  </script>
 </body>
 </html>
