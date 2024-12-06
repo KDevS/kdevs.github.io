@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+canvas {
+    display: block; /* Prevents extra space below the canvas */
+}
+
+#mainContainer {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+}
+
+video {
+	position: absolute;
+	top: 0px;
+	height: 100vh;
+}
+
+#gfxMain {
+	position: absolute;
+	top: 0px;
+}
