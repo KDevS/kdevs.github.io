@@ -1,0 +1,257 @@
+{
+	
+	"popup_data": 
+	[		
+		{ 
+			"id": "didyouknow01",		
+			"title":"",
+			"popupClass":"popup01",
+			"image": "assets/images/section1_1/Insights_1.png",		
+			"popupText":"While the focus of the plant is on receiving, processing, storing, and delivering whole cleaned corn, Frito Lay begins engaging with growers from the beginning of the process: selection of the seed.<br><br>The variety approval process of food grade corn seed selection involves the following steps: <br><br>Establishing variety pipeline: Bayer, Corteva, AgReliant<ul><li>Shortlisting potential varieties: Analytical data and visual review of highest quality samples is done (kernel hardness and disease tolerance is key).</li><li>Grow outs: Seed companies grow plots of select varieties in both Nebraska and Illinois.</li><li>Field evaluation: Thorough evaluation is done to look for disease resistance and confirmation of physical traits.</li><li>Cleaning and supplying: Seed companies supply 4M LBs of grain for Frito Lay testing.</li><li>Testing at FLNA plants: R&D department tests each sample during production.</li></ul>"
+		},
+		{ 
+			"id": "carousel_m2_01",		
+			"title":"",
+			"popupClass":"popup03",
+			"slides": [
+				{
+					"id": "slide1",
+					"image": "assets/images/m2/carousal1_p1.png",		
+					"popupText":"<strong>Corn Selection Process</strong><br><br>While the focus of the plant is on receiving, processing, storing, and delivering whole cleaned corn, Frito Lay begins engaging with growers from the beginning of the process: selection of the seed.<br><br>The variety approval process of food grade corn seed selection involves the following steps:"
+				},
+				{
+					"id": "slide2",
+					"image": "assets/images/m2/carousal1_p2.png",		
+					"popupText":"<strong>Establishing variety pipeline:</strong><br><br>Bayer, Corteva, AgReliant, and other seed companies"
+				},
+				{
+					"id": "slide3",
+					"image": "assets/images/m2/carousal1_p3.png",		
+					"popupText":"<strong>Shortlisting potential varieties:</strong><br><br>Analytical data and visual review of highest quality samples is done (kernel hardness and disease tolerance is key)."
+				},
+				{
+					"id": "slide4",
+					"image": "assets/images/m2/carousal1_p4.png",		
+					"popupText":"<strong>Grow outs:</strong><br><br>Seed companies grow plots of select varieties in both Nebraska and Illinois."
+				},
+				{
+					"id": "slide5",
+					"image": "assets/images/m2/carousal1_p5.png",		
+					"popupText":"<strong>Field evaluation:</strong><br><br>Thorough evaluation is done to look for disease resistance and confirmation of physical traits."
+				},
+				{
+					"id": "slide6",
+					"image": "assets/images/m2/carousal1_p6.png",		
+					"popupText":"<strong>Cleaning and supplying:</strong><br><br>Seed companies supply 4M LBs of grain for Frito Lay testing."
+				},
+				{
+					"id": "slide7",
+					"image": "assets/images/m2/carousal1_p7.png",		
+					"popupText":"<strong>Testing at FLNA plants:</strong><br><br>R&D department tests each sample during production."
+				}
+			]
+			
+		},
+		{ 
+			"id": "insight_m2_01",		
+			"title":"",
+			"popupClass":"popup01",
+			"image": "assets/images/m2/insignt1.png",		
+			"popupText":"<strong>Corn Quality</strong><br><br>Only select food-grade corn varieties from Frito Lay’s pre-approved variety list are allowed at the facility in an effort optimize manufacturing and finished product quality. Growers are incentivized to bring the highest quality grain that they can and are paid quality premiums if certain criteria are met."
+			
+		},
+		{ 
+			"id": "carousel_m2_02",		
+			"title":"",
+			"popupClass":"popup03",
+			"slides": [
+				{
+					"id": "slide1",
+					"image": "assets/images/m2/carousal2_p1.png",		
+					"popupText":"<strong>Ideal Moisture Content</strong><br><br>The ideal moisture content for corn is 14.5% once received at the manufacturing plants for processing."
+				},
+				{
+					"id": "slide2",
+					"image": "assets/images/m2/carousal2_p2.png",		
+					"popupText":"Corn with a moisture content between 14.5% and 19.9% is sent for drying, as we'll discuss in the next step."
+				},
+				{
+					"id": "slide3",
+					"image": "assets/images/m2/carousal2_p3.png",		
+					"popupText":"Corn with 14.5% or lower moisture content bypasses the drying stage, as it is suitable for long-term storage."
+				},
+				{
+					"id": "slide4",
+					"image": "assets/images/m2/carousal2_p4.png",		
+					"popupText":"Any corn with over 20% moisture content is rejected during the grading process at the scale, as it would incur damage during drying."
+				}
+			]
+			
+		},
+		{ 
+			"id": "info_m2_01",		
+			"title":"",
+			"popupClass":"popup01",
+			"image": "assets/images/m2/Process-Related_Popup_1.png",		
+			"popupText":"<strong>How is neutralization done?</strong><br><br>There are four steps in the neutralization process – Acid Treatment, Caustic Addition, Primary Separation, and Water Washing and Drying.<br><br>This tote container on the elevated platform contains citric acid which is used for the first step in neutralization: Acid treatment.<br><br>We will explore the process in more detail, but for that, we will need to step outside.<br><br>Let’s go!"
+			
+		},
+		{ 
+			"id": "insight_m2_02",		
+			"title":"",
+			"popupClass":"popup01",
+			"image": "assets/images/m2/insignt2.png",		
+			"popupText":"<strong>Grading of Kernels</strong><br><br>Grading is done based on kernel appearance and quality. At times, kernels get damaged during transport or by machines as evidenced by the bright white exposed endosperm. Corn kernels also get damaged due to excess heating, insects, mold, or cob disease as seen in their dark or off-color. Once the graded corn is analyzed, data is entered in the system before it is sent for unloading. After this, the outbound trucks are weighed as per process."
+			
+		},
+		{ 
+			"id": "insight_m2_03",		
+			"title":"",
+			"popupClass":"popup01",
+			"image": "assets/images/m2/insignt3.png",		
+			"popupText":"<strong>Use of Electronic Controllers in Dryers</strong><br><br>Electronic controllers monitor the moisture levels and adjust the temperature throughout using automatic sensors. They calculate the moisture content while coming and while going out and adjust accordingly. Growers are discounted to cover drying cost of wet grain. Bringing in grain closer to the target moisture is more advantageous to growers to minimize drying charges."
+			
+		},
+		{ 
+			"id": "insight_m2_04",		
+			"title":"",
+			"popupClass":"popup01",
+			"image": "assets/images/m2/insignt4.png",		
+			"popupText":"<strong>Corn Cleaning: Destoner Machine</strong><br><br>The destoner machine takes all the heaviest kernels from the gravity tables. It shoots them out to get these rocks and dirt balls out which can be the same size and density as the heaviest kernels."
+			
+		},
+		{ 
+			"id": "insight_m2_05",		
+			"title":"",
+			"popupClass":"popup01",
+			"image": "assets/images/m2/insignt5.png",		
+			"popupText":"<strong>Lab Certification</strong><br><br>An automatic sampler gathers corn from the product stream as it's being loaded, and testing occurs simultaneously. The load remains within the facility until testing is finished. Quality attributes are assessed and documented during testing. The in-house lab technician confirms whether mycotoxin levels are within safe limits. Retention samples are retained for three months. Following this process, freight billing and internal inventory transfers are finalized."
+			
+		}
+
+	],
+	"transcript_data": 
+	[		
+		{ 
+			"id": "aud_m2_intro_audio",				
+			"popupText":"This is the inbound area where corn is received. Before that, let’s first understand how we procure corn.<br><br>More than 125 contracted growers deliver corn to this facility for 11 months in a year. We receive select food grade varieties from our pre-approved list to optimize manufacturing quality and consistency for our finished products. More than 75% of corn is stored at the farm post-harvest and brought into the facility throughout the year to ensure our manufacturing facilities have a constant flow of clean corn to process. The Sidney facility is located in a highly desirable location due to its highly productive farm soils and access to rail and interstate for transportation."
+		},
+		{ 
+			"id": "aud_m2_ProbingOfTrucks_audio",				
+			"popupText":"When the trucks come into the plant, the first order of business is to ensure the quality of the product. The food-grade corn is weighed and sampled. During this process, a Frito Lay technician collects samples from each truck using a mechanical probing tool."
+		},
+		{ 
+			"id": "aud_m2_GradingOfCorn_audio",				
+			"popupText":"The grading section is the second part of the receiving area. Here, a technician receives the sample after probing and grades it for various quality attributes. If excessive defects are found outside of Frito Lay tolerance, the load is rejected and leaves the facility."
+		},
+		{ 
+			"id": "aud_m2_UnloadingOfCorn_audio",				
+			"popupText":"After approval based on our stringent quality criteria, the corn is unloaded into receiving pits from where it is sent to wet storage tanks prior to drying via bucket elevators and drag chain conveyors. Based on corn type and how wet it is, the pit is assigned to each truck for the unload."
+		},
+		{ 
+			"id": "aud_m2_InboundWetStorageBins_audio",				
+			"popupText":"When corn is received directly from farms, it has some degree of moisture content. Corn needs to be dried completely before it can be stored for a longer period. At the Sidney facility, there are four rows of three storage silos designated for this purpose. On average, 100 trucks per day deliver corn to be stored temporarily before it is moved to the drying process, then to long term storage."
+		},
+		{ 
+			"id": "aud_m2_CornDryingArea_audio",				
+			"popupText":"We’re now looking at the area where corn is dried before long-term storage. In corn dryers, natural gas burners blow hot air up to the corn to bring the moisture down. Low temperature is maintained to preserve grain quality and minimize stress to the corn."
+		},
+		{ 
+			"id": "aud_m2_CornScreeningArea_audio",				
+			"popupText":"After the corn comes out of the dryers, it is conveyed over to the aspirators and then the scalper area. In this area, the corn is screened for both oversize and undersize defects. It is important to note that growing conditions, agronomic practices, and hybrid selection can have significant impact on grain sizes and overall quality, which differ every year.<br><br>Therefore, the machines are adjusted each year to select grains as per the yield and quality attributes. Let’s explore how corn screening is done in more detail."
+		},
+		{ 
+			"id": "aud_m2_LongTermStorageBins_audio",				
+			"popupText":"This is where dried corn is kept for long term storage.<br><br>The physical silo make-up is one of the biggest differences among different facilities. Sidney facility has poured concrete silos and other facilities have steel bolted silos. In these long term silos, aeration fans push air through the grain mass to condition the corn."
+		},
+		{ 
+			"id": "aud_m2_ControlRoom_audio",				
+			"popupText":"This is the control room area for the corn cleaning operations. From here, we keep an eye on the various steps involved in the cleaning process. Let’s take a look!"
+		},
+		{ 
+			"id": "aud_m2_CornCleaningOperationsArea_audio",				
+			"popupText":"In the cleaning area, you'll notice various types of processes.<br><br>We have gravity tables that are utilized to separate the corn based on density, achieved by introducing air underneath the grain. Optical sorters equipped with cameras are employed to detect and remove any defects in the corn before it proceeds further in the process. Let’s explore!"
+		},
+		{ 
+			"id": "aud_m2_CleanCornStorageArea_audio",				
+			"popupText":"After the corn is cleaned, it is stored in separate “clean corn” holding bins. This enables loading a different corn type than the one currently being produced. The corn is then unloaded from the “clean corn” bins and routed to the loadout operation to get loaded on to railcars or trucks before shipping to manufacturing plants."
+		},
+		{ 
+			"id": "aud_m2_LoadingAndShippingArea_audio",				
+			"popupText":"This is the bulk loading area where clean corn is transferred to rail cars and trucks. Once the loader opens the roofs of the rail cars, clean corn is automatically shifted for transport."
+		},
+		{ 
+			"id": "aud_m2_MycotoxinTestingLab_audio",				
+			"popupText":"Welcome to the mycotoxin lab testing! Samples from delivery loads are tested here to ensure there are no quality issues."
+		},
+		{ 
+			"id": "aud_m2_outro_audio",				
+			"popupText":"We hope the Whole Clean Corn Processing Module has provided you with valuable insights into the steps involved in transforming raw corn into high-grade clean corn, which is fit to be supplied to Frito Lay plants.<br><br>By following the steps of probing, grading, separating, cleaning, and testing, raw corn is brought to life for usage across our various corn-based products.<br><br>This brings us to the end of the virtual tour of this facility! Every part of this process is important in ensuring quality, optimizing efficiency, and upholding food safety to maintain high-quality output resulting in the delicious, crunchy corn snacks that are loved by people across the globe."
+		}
+	],
+	"video_data" : 
+	[
+		{},			
+		{
+			"id": "vid_m2_01",
+			"label": "vid01",
+			"source": "assets/videos/m2/m2_process_popup_01.mp4"
+		},
+		{
+			"id": "vid_m2_02",
+			"label": "vid02",
+			"source": "assets/videos/m2/m2_process_popup_02.mp4"
+		},
+		{
+			"id": "vid_m2_03",
+			"label": "vid03",
+			"source": "assets/videos/m2/m2_insight_popup_01.mp4"
+		},
+		{
+			"id": "vid_m2_04",
+			"label": "vid04",
+			"source": "assets/videos/m2/m2_testimonial_popup_01.mp4"
+		},
+		{
+			"id": "vid_m2_05",
+			"label": "vid05",
+			"source": "assets/videos/m2/m2_process_popup_03.mp4"
+		},
+		{
+			"id": "vid_m2_06",
+			"label": "vid06",
+			"source": "assets/videos/m2/m2_process_popup_04.mp4"
+		},
+		{
+			"id": "vid_m2_07",
+			"label": "vid07",
+			"source": "assets/videos/m2/m2_process_popup_05.mp4"
+		},
+		{
+			"id": "vid_m2_08",
+			"label": "vid08",
+			"source": "assets/videos/m2/m2_insight_popup_02.mp4"
+		},
+		{
+			"id": "vid_m2_09",
+			"label": "vid09",
+			"source": "assets/videos/m2/m2_process_popup_06.mp4"
+		},
+		{
+			"id": "vid_m2_10",
+			"label": "vid10",
+			"source": "assets/videos/m2/m2_process_popup_07.mp4"
+		},
+		{
+			"id": "vid_m2_11",
+			"label": "vid11",
+			"source": "assets/videos/m2/m2_process_popup_08.mp4"
+		},
+		{
+			"id": "vid_m2_12",
+			"label": "vid12",
+			"source": "assets/videos/m2/m2_testimonial_popup_02.mp4"
+		}
+	
+	]
+}

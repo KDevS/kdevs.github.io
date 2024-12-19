@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>AR :: Fire Extinguisher Training</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link type="text/css" rel="stylesheet" href="./styles/style.css">
+	</head>
+
+	<body>
+		<div id="mainContainer">
+			<video autoplay></video>
+			<!-- <div class="clock">
+				<div class="minutesContainer">
+					<div class="minutes"></div>
+				</div>
+				<div class="secondsContainer">
+					<div class="seconds"></div>
+				</div>
+			</div> -->
+		</div>
+		<script type="importmap">
+			{
+				"imports": {
+					"three": "./node_modules/three/build/three.module.js",
+					"three/addons/": "./node_modules/three/examples/jsm/"
+				}
+			}
+		</script>
+		
+		<script type="module" src="./scripts/stats.js"></script>
+		<script type="module" src="./scripts/gui.js"></script>
+		<script type="module" src="./scripts/main.js"></script>
+		
+		
+
+	</body>
+</html>
