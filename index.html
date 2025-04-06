@@ -1,42 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>PepsiCo NEO :: Fire Extinguisher Training AR</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<meta name="viewport" id="metaViewport" content="user-scalable=no, initial-scale=1, width=device-width, viewport-fit=cover" data-tdv-general-scale="0.5"/>
-		<meta name="apple-mobile-web-app-capable" content="yes"/>
-		<meta name="apple-mobile-web-app-status-bar-style" content="default"> 
-		<meta name="description" content="Augmented Reality Training"/>
-		<meta name="theme-color" content="#FFFFFF"/>
-		<link href="styles/jquery-ui.min.css" rel="stylesheet">
-		<link href="styles/wrapper.css" rel="stylesheet">
-		<link type="text/css" rel="stylesheet" href="styles/style.css">
-		
-		<script src="scripts/libs/jquery-3.7.1.min.js"></script>
-		<script src="scripts/libs/jquery-ui.min.js"></script>
-		<script src="scripts/libs/processor.js"></script>
-		<!-- <script src="scripts/lms/APIWrapper_scorm_12.js"></script> -->
+  <head>
+    <title>WebAR Demo</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		
-		<script src="scripts/Wrapper.js"></script>
-		<script src="scripts/Menu.js"></script>
-		<!-- <script src="scripts/Mascot.js"></script> -->
-		<script src="scripts/UIManager.js"></script>
-		<script src="scripts/PopupManager.js"></script>
-		<script src="scripts/Menu.js"></script>
+    <link rel="stylesheet" href="./styles.css">
+    
+    <!-- The following libraries and polyfills are recommended to maximize browser support -->
+    <!-- NOTE: you must adjust the paths as appropriate for your project -->
+    
+    <!-- 🚨 REQUIRED: Web Components polyfill to support Edge and Firefox < 63 -->
+<!--     <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.1.3/webcomponents-loader.js"></script> -->
 
-		<style type="text/css">
-			html, body { height:100%; width:100%; height:100vh; width:100vw; margin:0; padding:0; overflow:hidden; }
-		</style>    
-	</head>
-	<body onload="loadhtml()">
-		<div class='screen-label'></div>
-		<div class='top-band'>
-			
-		</div>
-		<!-- <div class='trancript-container' style='display:none;'></div> -->
-		<div class='popup-container' style='display:none;'></div>
-		<iframe loading="eager" id="app-frame" style="border:none; width: 100%; height: 100%;"></iframe>
-		<div class='bottom-band'></div>
-	</body>
+    <!-- 💁 OPTIONAL: Intersection Observer polyfill for better performance in Safari and IE11 -->
+<!--     <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script> -->
+
+    <!-- 💁 OPTIONAL: Resize Observer polyfill improves resize behavior in non-Chrome browsers -->
+<!--     <script src="https://unpkg.com/resize-observer-polyfill@1.5.0/dist/ResizeObserver.js"></script> -->
+    
+    <!-- 💁 OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
+    <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
+
+  </head> 
+<body>
+  <div class="row">
+  <div id="card">
+    <!-- All you need to put beautiful, interactive 3D content on your site: -->
+    <model-viewer src="./assets/model.glb"
+                  ios-src="./assets/model.usdz"
+                  poster="./assets/model.png"
+                  alt="A 3D model of fire"
+                  shadow-intensity="1"
+                  camera-controls
+				  autoplay
+                  auto-rotate ar>
+    </model-viewer>
+	<div class="control">
+			<button class="controller" onclick="controllerClicked(this, 'mode')" style="background-image: url('./assets/fire_extinguisher.png');">
+			</button>
+	</div>
+  </div>
+  </div>
+	
+  <script type="module">
+	  const modelViewer = document.querySelector("model-viewer");
+	  let isPlaying = true;
+	  window.controllerClicked = (element, name) => {
+		console.log("controller clicked");
+		
+		isPlaying = !isPlaying;
+		let speed = isPlaying ? 1 : 0;
+		modelViewer.timeScale = speed;
+	  };
+
+	  document.querySelector(".control").addEventListener('beforexrselect', (ev) => {
+		// Keep slider interactions from affecting the XR scene.
+		ev.preventDefault();
+	  });
+  </script>
+
+	
+  <!-- 💁 Include both scripts below to support all browsers! -->
+
+  <!-- Loads <model-viewer> for modern browsers: -->
+  <script type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+  </script>
+
+  <!-- Loads <model-viewer> for old browsers like IE11: -->
+  <script nomodule
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js">
+  </script>
+</body>
 </html>
