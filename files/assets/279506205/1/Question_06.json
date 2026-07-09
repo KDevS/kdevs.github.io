@@ -1,0 +1,33 @@
+{
+    "id" : "006",
+    "modelReference" : "SG",
+    "questionText" : "txt_Question_Text_06",
+    "questionTextFallback" : "Um welches Gerät handelt es sich hier?",
+    "answers" : [
+        {
+            "id" : "answer_01",
+            "isCorrect" : false,
+            "answerText" : "txt_Question_6_Answer_Text_01",
+            "answerTextFallback" : "RC"
+        },
+        {
+            "id" : "answer_02",
+            "isCorrect" : false,
+            "answerText" : "txt_Question_6_Answer_Text_02",
+            "answerTextFallback" : "SE-495"
+        },
+        {
+            "id" : "answer_03",
+            "isCorrect" : false,
+            "answerText" : "txt_Question_6_Answer_Text_03",
+            "answerTextFallback" : "FzA"
+        },
+        {
+            "id" : "answer_04",
+            "isCorrect" : true,
+            "answerText" : "txt_Question_6_Answer_Text_04",
+            "answerTextFallback" : "SG"
+        }
+    ]
+
+}

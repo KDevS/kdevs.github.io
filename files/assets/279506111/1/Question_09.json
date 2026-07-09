@@ -1,0 +1,33 @@
+{
+    "id" : "009",
+    "modelReference" : "UBOX",
+    "questionText" : "txt_Question_Text_09",
+    "questionTextFallback" : "Um welches Gerät handelt es sich hier?",
+    "answers" : [
+        {
+            "id" : "answer_01",
+            "isCorrect" : false,
+            "answerText" : "txt_Question_9_Answer_Text_01",
+            "answerTextFallback" : "CBOX 20"
+        },
+        {
+            "id" : "answer_02",
+            "isCorrect" : false,
+            "answerText" : "txt_Question_9_Answer_Text_02",
+            "answerTextFallback" : "Takt Router"
+        },
+        {
+            "id" : "answer_03",
+            "isCorrect" : false,
+            "answerText" : "txt_Question_9_Answer_Text_03",
+            "answerTextFallback" : "SE-495"
+        },
+        {
+            "id" : "answer_04",
+            "isCorrect" : true,
+            "answerText" : "txt_Question_9_Answer_Text_04",
+            "answerTextFallback" : "UBOX"
+        }
+    ]
+
+}

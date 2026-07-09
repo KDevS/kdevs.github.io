@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VBS Leadership Content System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        .questions-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .questions-list li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .questions-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            top: -4px;
+            color: var(--primary-color, #30768F);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background: linear-gradient(135deg, #e8f4f8 0%, #d1e7dd 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .tools-list {
+            background: #e8f6f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            row-gap: 1rem;
+        }
+
+        .tools-list-item-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            row-gap: 1rem;
+        }
+
+        .tool-item {
+            text-align: center;
+            color: #576715;
+            text-decoration: underline;
+            font-weight: 500;
+            margin-bottom: 8px;
+            cursor: pointer;
+            display: block;
+        }
+
+        .qr-code {
+            width: 25%;
+            object-fit: contain;
+            aspect-ratio: 1 / 1;
+        }
+
+        /* Navigation Header */
+        .nav-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e0e0e0;
+            z-index: 1000;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .back-btn {
+            background: linear-gradient(135deg, var(--primary-color, #688B98), var(--secondary-color, #7ba3b3));
+            color: white;
+            box-shadow: 0 2px 8px rgba(104, 139, 152, 0.3);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 0;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px) scale(1.1);
+            box-shadow: 0 4px 15px rgba(104, 139, 152, 0.4);
+        }
+
+        .close-btn {
+            background: #6c757d;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            padding: 0;
+        }
+
+        .close-btn:hover {
+            background: #5a6268;
+            transform: scale(1.1);
+        }
+
+        .nav-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            max-width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px 40px;
+        }
+
+        .title-section {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .title-accent {
+            width: 12px;
+            height: 120px;
+            background: linear-gradient(to bottom, var(--primary-color, #688B98), var(--secondary-color, #7ba3b3));
+            margin-right: 20px;
+            border-radius: 4px;
+        }
+
+        .title-content h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .title-content .subtitle {
+            font-size: 1.5rem;
+            color: #666;
+            font-weight: 300;
+        }
+
+        .teaser-section {
+            background: rgba(104, 139, 152, 0.1);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            border-left: 5px solid var(--primary-color, #688B98);
+        }
+
+        .teaser-text {
+            font-size: 1.1rem;
+            color: #2c3e50;
+            line-height: 1.7;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .content-section {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+            align-items: flex-start;
+        }
+
+        .section-label {
+            background: linear-gradient(135deg, var(--primary-color, #688B98), var(--secondary-color, #7ba3b3));
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.3rem;
+            text-align: center;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(104, 139, 152, 0.3);
+        }
+
+        .section-content {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--primary-color, #688B98);
+        }
+
+        .section-text {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #444;
+        }
+
+        .highlight-box {
+            background: #e9e9e9;
+            border: 2px solid var(--primary-color, #688B98);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--primary-color, #688B98);
+        }
+
+        /* Leadership Ladder Component */
+        .leadership-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            margin: 25px 0;
+        }
+
+        .leadership-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .leadership-table td {
+            vertical-align: middle;
+            padding: 15px 5px;
+            position: relative;
+        }
+
+        .text-column {
+            width: 35%;
+            text-align: right;
+            padding-right: 20px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .text-column.highlight {
+            color: #2ecc71;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .text-column.bottom {
+            color: #333;
+            font-style: italic;
+        }
+
+        .english-translation {
+            font-size: 14px;
+            color: #777;
+            font-style: italic;
+            font-weight: 400;
+            display: block;
+            margin-top: 2px;
+        }
+
+        .ladder-column {
+            width: 30%;
+            text-align: center;
+            position: relative;
+            padding: 15px 5px;
+        }
+
+        .ladder-step {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-1 {
+            background-color: #f4d03f;
+        }
+
+        .step-2 {
+            background-color: #f7dc6f;
+        }
+
+        .step-3 {
+            background-color: #f8c471;
+        }
+
+        .step-4 {
+            background-color: #f5b041;
+        }
+
+        .step-5 {
+            background-color: #58d68d;
+        }
+
+        .step-6 {
+            background-color: #f7dc6f;
+        }
+
+        .step-7 {
+            background-color: #f4d03f;
+        }
+
+        /* Ladder rails */
+        .ladder-column::before {
+            content: '';
+            position: absolute;
+            left: 35%;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: linear-gradient(to bottom, #8b4513 0%, #8b4513 100%);
+            z-index: 1;
+        }
+
+        .ladder-column::after {
+            content: '';
+            position: absolute;
+            right: 35%;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: linear-gradient(to bottom, #8b4513 0%, #8b4513 100%);
+            z-index: 1;
+        }
+
+        .ladder-rung {
+            height: 6px;
+            background: #8b4513;
+            width: 80px;
+            margin: 0 auto;
+            border-radius: 3px;
+        }
+
+        .rung-row {
+            height: 20px;
+        }
+
+        .rung-row td {
+            padding: 5px 5px;
+        }
+
+        .question-column {
+            width: 35%;
+            text-align: left;
+            padding-left: 0px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .speech-bubble {
+            background: #ecf0f1;
+            border: 2px solid #bdc3c7;
+            border-radius: 20px;
+            padding: 10px 15px;
+            position: relative;
+            display: inline-block;
+            max-width: 200px;
+        }
+
+        .speech-bubble::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid #bdc3c7;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-right: 8px solid #ecf0f1;
+        }
+
+        .warning-bubble {
+            background: #fff3cd;
+            border: 2px solid #ffeaa7;
+            color: #856404;
+            font-weight: 500;
+            border-radius: 15px;
+            padding: 8px 12px;
+            font-style: italic;
+        }
+
+        .warning-bubble::before {
+            border-right-color: #ffeaa7;
+        }
+
+        .warning-bubble::after {
+            border-right-color: #fff3cd;
+        }
+
+        .question-text {
+            color: #666;
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        .Left-text {           
+            font-size: 14px;           
+        }
+
+        .footer-signature {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(104, 139, 152, 0.1);
+            border-radius: 8px;
+            font-style: italic;
+            color: #666;
+        }
+
+        /* Theme Variables */
+        .theme-lead-uebernehmen {
+            --primary-color: #688B98;
+            --secondary-color: #7ba3b3;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .content-section {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .section-label {
+                min-height: auto;
+                margin-bottom: 0;
+            }
+
+            .title-content h1 {
+                font-size: 2rem;
+            }
+
+            .nav-title {
+                display: none;
+            }
+
+            .leadership-container {
+                padding: 20px;
+                margin: 25px 0;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+
+            .text-column,
+            .question-column {
+                font-size: 12px;
+            }
+
+            .ladder-step {
+                width: 35px;
+                height: 35px;
+                font-size: 14px;
+            }
+
+            .speech-bubble {
+                max-width: 150px;
+                font-size: 12px;
+            }
+
+            .english-translation {
+                font-size: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 90px 15px 20px;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+
+            .content-grid {
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+
+            .content-section {
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+
+            .section-content {
+                max-width: 100%;
+                box-sizing: border-box;
+                overflow-x: hidden;
+            }
+
+            .leadership-container {
+                padding: 15px;
+                margin: 20px 0;
+                max-width: 100%;
+                box-sizing: border-box;
+                overflow-x: auto;
+            }
+
+            .leadership-table {
+                width: 100%;
+                min-width: 300px;
+                table-layout: fixed;
+            }
+
+            .title-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .title-accent {
+                width: 100%;
+                height: 12px;
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .title-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .nav-header {
+                padding: 10px 15px;
+            }
+
+            .nav-btn {
+                padding: 8px 16px;
+                font-size: 13px;
+            }
+
+            .back-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+
+            .close-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .teaser-section {
+                padding: 20px;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+
+            .section-content {
+                padding: 15px;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+
+            .leadership-container {
+                padding: 15px;
+                margin: 15px 0;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+
+            .title-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .section-text {
+                font-size: 1rem;
+            }
+
+            .leadership-table {
+                font-size: 11px;
+                min-width: 280px;
+            }
+
+            .ladder-step {
+                width: 25px;
+                height: 25px;
+                font-size: 11px;
+            }
+
+            .text-column {
+                font-size: 11px;
+                padding-right: 10px;
+            }
+
+            .question-column {
+                font-size: 10px;
+            }
+
+            .speech-bubble {
+                max-width: 120px;
+                font-size: 10px;
+                padding: 6px 10px;
+            }
+
+            .english-translation {
+                font-size: 9px;
+            }
+        }
+
+        /* Entrance animation */
+        .container {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="theme-lead-uebernehmen">
+    <div class="nav-header">
+        <div class="nav-buttons">
+            <button class="nav-btn back-btn" onclick="backToSubmenu()">
+                ←
+            </button>
+        </div>
+
+        <div class="nav-title" data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_1">Ich beabsichtige...
+        </div>
+
+        <button class="nav-btn close-btn" onclick="closeContent()">
+            ×
+        </button>
+    </div>
+
+    <div class="container">
+        <div class="title-section">
+            <div class="title-accent"></div>
+            <div class="title-content">
+                <h1 data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_1">Ich beabsichtige...</h1>
+                <div class="subtitle" data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_2">06 - Lead
+                    übernehmen</div>
+            </div>
+        </div>
+
+        <div class="teaser-section">
+            <div class="teaser-text">
+                <span data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_3">Du möchtest den Lead übernehmen? Dann sage, was du beabsichtigst.</span>
+                <br><br>
+                <span data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_4">Wie wir miteinander reden, zeigt, in welchem Verhältnis wir zueinanderstehen. Wenn du den Lead übernehmen willst, dann muss dies auch aus deiner Sprache hervorgehen.</span>
+            </div>
+        </div>
+
+        <div class="content-grid">
+            <div class="content-section">
+                <div class="section-label" data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_5">Wofür?
+                </div>
+                <div class="section-content">
+                    <p class="section-text" data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_8">
+                        Den Lead zu übernehmen heisst, eine Sprache zu verwenden, die Entscheidungsfreude und
+                        Eigenverantwortung signalisiert Das Formulieren einer klaren Absicht zeigt, dass du im Lead bist
+                        und nicht auf Anweisungen wartest.
+                    </p>
+                    <br>
+                    <p class="section-text" data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_9">
+                        Verwende die Formulierung «Ich beabsichtige...»
+                    </p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="section-label" data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_6">Wie?</div>
+                <div class="section-content">
+                    <p class="section-text" data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_10">
+                        Statt eine Genehmigung oder Anweisung von Vorgesetzten einzuholen, kommunizieren wir
+                        <strong>unsere beabsichtigten Handlungen</strong> klar und eigenverantwortlich. Wir nutzen eine
+                        aktive Sprache und wählen gezielt das richtige Niveau auf der «Ladder of Leadership»:
+                    </p>
+
+                    <div class="leadership-container">
+                        <table class="leadership-table">
+                            <tr>
+                                <td class="text-column">
+                                    <span data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_16">Ich tue seit eh und je...</span>
+                                    <span class="english-translation" data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_17">(I've been doing...)</span>
+                                </td>
+                                <td class="ladder-column">
+                                    <div class="ladder-step step-7">7</div>
+                                </td>
+                                <td class="question-column"></td>
+                            </tr>
+                            <tr class="rung-row">
+                                <td class="text-column"></td>
+                                <td class="ladder-column">
+                                    <div class="ladder-rung"></div>
+                                </td>
+                                <td class="question-column"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-column">
+                                    <span data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_18">Ich habe getan...</span>
+                                    <span class="english-translation" data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_19">(I've done...)</span>
+                                </td>
+                                <td class="ladder-column">
+                                    <div class="ladder-step step-6">6</div>
+                                </td>
+                                <td class="question-column">
+                                    <div class="speech-bubble warning-bubble"
+                                        data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_20">
+                                        Level Six - too late to Fix!
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="rung-row">
+                                <td class="text-column"></td>
+                                <td class="ladder-column">
+                                    <div class="ladder-rung"></div>
+                                </td>
+                                <td class="question-column"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-column highlight"
+                                    data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_21">Ich
+                                    beabsichtige...</td>
+                                <td class="ladder-column">
+                                    <div class="ladder-step step-5">5</div>
+                                </td>
+                                <td class="question-column"></td>
+                            </tr>
+                            <tr class="rung-row">
+                                <td class="text-column"></td>
+                                <td class="ladder-column">
+                                    <div class="ladder-rung"></div>
+                                </td>
+                                <td class="question-column">
+                                    <div class="question-text"
+                                        data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_22">Was
+                                        beabsichtigst du?</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-column"
+                                    data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_23">Ich möchte...
+                                </td>
+                                <td class="ladder-column">
+                                    <div class="ladder-step step-4">4</div>
+                                </td>
+                                <td class="question-column"></td>
+                            </tr>
+                            <tr class="rung-row">
+                                <td class="text-column"></td>
+                                <td class="ladder-column">
+                                    <div class="ladder-rung"></div>
+                                </td>
+                                <td class="question-column">
+                                    <div class="question-text"
+                                        data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_24">Was möchtest
+                                        du?</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-column"
+                                    data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_25">Ich denke...</td>
+                                <td class="ladder-column">
+                                    <div class="ladder-step step-3">3</div>
+                                </td>
+                                <td class="question-column"></td>
+                            </tr>
+                            <tr class="rung-row">
+                                <td class="text-column"></td>
+                                <td class="ladder-column">
+                                    <div class="ladder-rung"></div>
+                                </td>
+                                <td class="question-column">
+                                    <div class="question-text"
+                                        data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_26">Was denkst
+                                        du?</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-column"
+                                    data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_27">Ich sehe...</td>
+                                <td class="ladder-column">
+                                    <div class="ladder-step step-2">2</div>
+                                </td>
+                                <td class="question-column"></td>
+                            </tr>
+                            <tr class="rung-row">
+                                <td class="text-column"></td>
+                                <td class="ladder-column">
+                                    <div class="ladder-rung"></div>
+                                </td>
+                                <td class="question-column">
+                                    <div class="question-text"
+                                        data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_28">Was siehst
+                                        du?</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-column"
+                                    data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_29">Sag mir, was ich
+                                    tun soll.</td>
+                                <td class="ladder-column">
+                                    <div class="ladder-step step-1">1</div>
+                                </td>
+                                <td class="question-column"></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <p class="section-text" data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_11">
+                        Stufe 5 ist das richtige Niveau. Wir vermeiden passive Formulierungen wie «Darf
+                        ich…?», «Wäre es ok, wenn ich…?», «Was soll ich tun?».
+                    </p>
+                    <br>
+                    <p class="section-text" data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_12">
+                        Bevor wir unsere Absicht äussern, überlegen wir uns auch, was das Gegenüber für Anschlussfragen
+                        und Bedenken haben könnte. Diese nehmen wir möglichst vorweg. Bsp.: «Ich habe mir bereits
+                        überlegt, ob…», «Bereits geprüft habe ich, ob…»
+                    </p>
+                    <br>
+                    <p class="section-text" data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_13">
+                        Ein unwissender Zuhörer erkennt somit bereits an der Sprache, wer <em>im Lead</em> ist.
+                    </p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="section-label" data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_7">Ergänzung
+                </div>
+                <div class="section-content">
+                    <p class="section-text" data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_14">
+                        Wie Sprache und der Mechanismus «Ich beabsichtige…» die Kultur einer Organisation grundlegend
+                        verändern können, zeigt das sehr unterhaltsame Buch von David Marquet «Turn the ship around»
+                        (deutsche Ausgabe: Reiss das Ruder rum!)
+                    </p>
+
+                    <ul class="questions-list">
+                        <li data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_30">
+                            Turn the Ship Around! - David Marquet, Author, Keynote Speaker, Creator of Intent-Based
+                            Leadership, Intent-Based Leadership International
+                        </li>
+                    </ul>
+
+                    <!-- <div class="tools-list">
+                        <div class="tools-list-item-container">
+                            <span data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_30"><a href="https://davidmarquet.com/books/turn-the-ship-around-book/" target="_blank" class="tool-item" >Turn the Ship Around! - David Marquet, Author, Keynote Speaker, Creator of Intent-Based Leadership, Intent-Based Leadership Internationa</a></span>
+                            <img id="handelsspielraum-qr" class="qr-code" src="" />
+                        </div>
+                    </div>
+
+                    <p class="section-text" data-translate="txt_Layer_6_Lead_uebernehmen_Content_SubMenu_1_15">
+                        Sei Leader/in.
+                    </p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Translation System for iframe communication with PlayCanvas
+        class IframeTranslationSystem {
+            constructor() {
+                this.translations = {};
+                this.translationImages = {};
+                this.translationVideos = {};
+                this.isReady = false;
+                this.pendingRequests = new Map();
+                this.requestId = 0;
+                this.currentLanguage = "DE";
+                
+                // Listen for messages from parent (PlayCanvas)
+                window.addEventListener('message', this.handleMessage.bind(this));
+                
+                // Request initial translations
+                this.requestInitialTranslations();
+            }
+
+            handleMessage(event) {
+                const { type, data, requestId, language } = event.data;
+                
+                switch(type) {
+                    case 'translation-response':
+                        this.handleTranslationResponse(data, requestId);
+                        break;
+                    case 'language-changed':
+                        this.handleLanguageChange(data);
+                        break;
+                    case 'bulk-translations':
+                        this.currentLanguage = (language)? language : this.currentLanguage;
+                        this.handleBulkTranslations(data);
+                        this.handleTranslationHideElements();
+                        break;
+                    case 'bulk-image-translations':
+                        this.handleBulkImageTranslations(data);
+                        break;
+                    case 'bulk-video-translations':
+                        this.handleBulkVideoTranslations(data);
+                        break;
+                }
+            }
+
+            // Request all necessary translations on load
+            requestInitialTranslations() {
+                const translationKeys = this.getAllTranslationKeys();
+                
+                const request = {
+                    type: 'request-bulk-translations',
+                    keys: translationKeys,
+                    requestId: ++this.requestId
+                };
+                
+                window.parent.postMessage(request, '*');
+
+                const imageTranslationKeys = this.getAllImageTranslationKeys();
+
+                const imageRequest = {
+                    type: 'request-bulk-image-translations',
+                    keys: imageTranslationKeys,
+                    requestId: ++this.requestId
+                };
+                
+                window.parent.postMessage(imageRequest, '*');
+
+                const videoTranslationKeys = this.getAllVideoTranslationKeys();
+
+                console.log(videoTranslationKeys);
+
+                const videoRequest = {
+                    type: 'request-bulk-video-translations',
+                    keys: videoTranslationKeys,
+                    requestId: ++this.requestId
+                };
+                
+                window.parent.postMessage(videoRequest, '*');
+            }
+
+            // Get all translation keys from document
+            getAllTranslationKeys() {
+                const elements = document.querySelectorAll('[data-translate]');
+                return Array.from(elements).map(el => el.getAttribute('data-translate'));
+            }
+
+            getAllImageTranslationKeys(){
+                const elements = document.querySelectorAll('[image-translate]');
+                return Array.from(elements).map(el => el.getAttribute('image-translate'));
+            }
+
+            getAllVideoTranslationKeys(){
+                const elements = document.querySelectorAll('[video-translate]');
+                return Array.from(elements).map(el => el.getAttribute('video-translate'));
+            }
+
+            getAllTranslationHideElements(){
+                const elements = document.querySelectorAll('[hide-on-translate]');
+                return elements;
+            }
+
+            // Handle bulk translations response
+            handleBulkTranslations(translations) {
+                this.translations = translations.data || translations;
+                this.isReady = true;
+                
+                this.applyTranslations();
+                
+                // Remove loading class
+                document.body.classList.remove('loading');
+                document.body.classList.add('translation-loaded');
+            }
+
+            handleTranslationHideElements(){
+                const hideElements = this.getAllTranslationHideElements();
+                for(let i = 0; i < hideElements.length; i++){
+                    let hiddenOnLangs = hideElements[i].getAttribute('hide-on-translate').split(",");
+                    console.log(hiddenOnLangs);
+                    if(hiddenOnLangs.indexOf(this.currentLanguage) != -1){
+                        hideElements[i].style.display = "none";
+                    }else{
+                        hideElements[i].style.display = "";
+                    }
+                }
+            }
+
+            handleBulkImageTranslations(translations) {
+                this.translationImages = translations.data || translations;
+                
+                this.applyImageTranslations();
+            }
+
+            handleBulkVideoTranslations(translations) {
+                this.translationVideos = translations.data || translations;
+                
+                this.applyVideoTranslations();
+            }
+
+            // Apply translations to all elements
+            applyTranslations() {
+                const elements = document.querySelectorAll('[data-translate]');
+                
+                elements.forEach((element) => {
+                    const key = element.getAttribute('data-translate');
+                    const translation = this.translations[key];
+                    
+                    if (translation && translation.trim() != "") {
+                        element.style.display = "";
+                        if (element.tagName.toLowerCase() === 'input') {
+                            element.placeholder = translation;
+                        } else {
+                            // Check if translation contains HTML
+                            if (translation.includes('<') && translation.includes('>')) {
+                                element.innerHTML = translation;
+                            } else {
+                                element.textContent = translation;
+                            }
+                        }
+                    }else{
+                        element.style.display = "none";
+                    }
+                });
+            }
+
+            applyImageTranslations() {
+                const elements = document.querySelectorAll('[image-translate]');
+                
+                elements.forEach((element) => {
+                    const key = element.getAttribute('image-translate');
+                    const imageTranslation = this.translationImages[key];
+                    
+                    if (imageTranslation && imageTranslation.trim() != "") {
+                        element.style.display = "";
+                        if (element.tagName.toLowerCase() === 'img') {
+                            element.src = imageTranslation;
+                        }else{
+                            element.style.display = "none";
+                        }
+                    }else{
+                        element.style.display = "none";
+                    }
+                });
+            }
+
+            applyVideoTranslations() {
+                const elements = document.querySelectorAll('[video-translate]');
+                
+                elements.forEach((element) => {
+                    const key = element.getAttribute('video-translate');
+                    const videoTranslation = this.translationVideos[key];
+                    
+                    if (videoTranslation && videoTranslation.trim() != "") {
+                        element.style.display = "";
+                        if (element.tagName.toLowerCase() === 'video' || element.tagName.toLowerCase() === 'source') {
+                            element.src = videoTranslation;
+                        }else{
+                            element.style.display = "none";
+                        }
+                    }else{
+                        if(element.tagName.toLowerCase() === 'source'){
+                            element.parent.style.display = "none";
+                        }
+
+                        element.style.display = "none";
+                    }
+                });
+            }
+
+            // Handle language change
+            handleLanguageChange(newLanguage) {
+                this.requestInitialTranslations();
+            }
+
+            // Request individual translation (for dynamic content)
+            async requestTranslation(key, fallback = '') {
+                if (this.translations[key]) {
+                    return this.translations[key];
+                }
+
+                return new Promise((resolve) => {
+                    const requestId = ++this.requestId;
+                    this.pendingRequests.set(requestId, resolve);
+                    
+                    const request = {
+                        type: 'request-translation',
+                        key: key,
+                        fallback: fallback,
+                        requestId: requestId
+                    };
+                    
+                    window.parent.postMessage(request, '*');
+                });
+            }
+
+            // Handle individual translation response
+            handleTranslationResponse(data, requestId) {
+                const resolve = this.pendingRequests.get(requestId);
+                if (resolve) {
+                    resolve(data.translation);
+                    this.pendingRequests.delete(requestId);
+                }
+            }
+        }
+
+        /* Navigation Functions */
+        function backToSubmenu() {
+            window.parent.postMessage({
+                type: 'back-to-submenu',
+                submenu: 'Layer-6-LeadershipHacks-Submenu'
+            }, '*');
+        }
+
+        function closeContent() {
+            window.parent.postMessage({
+                type: 'close-content'
+            }, '*');
+        }
+
+        /* Escape key handler */
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeContent();
+            }
+
+            if (e.key === 'Backspace'){
+                backToSubmenu();
+            }
+
+            if(e.key == 'l' || e.key == 'L'){
+                window.parent.postMessage({
+                    type: 'cycle-through-language',
+                }, '*');
+            }
+        });
+
+        /* Initialize translation system */
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('loading');
+            window.translationSystem = new IframeTranslationSystem();
+        });
+    </script>
+</body>
+
+</html>

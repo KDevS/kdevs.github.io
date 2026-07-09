@@ -1,0 +1,33 @@
+{
+    "id" : "015",
+    "modelReference" : "FzA",
+    "questionText" : "txt_Question_Text_14",
+    "questionTextFallback" : "Um welches Gerät handelt es sich hier?",
+    "answers" : [
+        {
+            "id" : "answer_01",
+            "isCorrect" : false,
+            "answerText" : "txt_Question_15_Answer_Text_01",
+            "answerTextFallback" : "Takt Router"
+        },
+        {
+            "id" : "answer_02",
+            "isCorrect" : false,
+            "answerText" : "txt_Question_15_Answer_Text_02",
+            "answerTextFallback" : "UBOX"
+        },
+        {
+            "id" : "answer_03",
+            "isCorrect" : true,
+            "answerText" : "txt_Question_15_Answer_Text_03",
+            "answerTextFallback" : "FzA & FzA Short"
+        },
+        {
+            "id" : "answer_04",
+            "isCorrect" : false,
+            "answerText" : "txt_Question_15_Answer_Text_04",
+            "answerTextFallback" : "MBOX"
+        }
+    ]
+
+}

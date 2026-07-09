@@ -1,0 +1,33 @@
+{
+    "id" : "004",
+    "modelReference" : "RCU",
+    "questionText" : "txt_Question_Text_04",
+    "questionTextFallback" : "Um welches Gerät handelt es sich hier?",
+    "answers" : [
+        {
+            "id" : "answer_01",
+            "isCorrect" : false,
+            "answerText" : "txt_Question_4_Answer_Text_01",
+            "answerTextFallback" : "SE-495"
+        },
+        {
+            "id" : "answer_02",
+            "isCorrect" : true,
+            "answerText" : "txt_Question_4_Answer_Text_02",
+            "answerTextFallback" : "RCU"
+        },
+        {
+            "id" : "answer_03",
+            "isCorrect" : false,
+            "answerText" : "txt_Question_4_Answer_Text_03",
+            "answerTextFallback" : "Lautsprecher"
+        },
+        {
+            "id" : "answer_04",
+            "isCorrect" : false,
+            "answerText" : "txt_Question_4_Answer_Text_04",
+            "answerTextFallback" : "RC"
+        }
+    ]
+
+}

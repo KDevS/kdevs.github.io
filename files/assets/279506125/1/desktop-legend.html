@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desktop Legend</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ============================================
+           RESET & BASE
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            overflow: hidden;
+            background: transparent;
+        }
+
+        /* ============================================
+           DESKTOP LEGEND - LATERAL (DEFAULT)
+           ============================================ */
+        .desktop-legend-container {
+            position: fixed;
+            /*left: 40px;
+            top: 50%;
+            transform: translateY(-50%); */
+
+            top: calc(10vh + 1.5vw);
+            left: 0.5rem;
+            max-width: calc(100vw - 1rem);
+            padding: 0.7rem;
+            
+            /* Ancho responsivo */
+            width: 100%;
+
+            /* LIQUID GLASS EFFECT */
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+
+            border-radius: 16px;
+            /* padding: 16px; */
+            z-index: 100;
+            pointer-events: all;
+            
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Layout vertical por defecto */
+        .legend-items-wrapper {
+            /* display: flex;
+            flex-direction: column;
+            gap: 8px; */
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 0;
+        }
+
+        /* ============================================
+           LEGEND ITEMS
+           ============================================ */
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        /* Hover state */
+        .legend-item:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Highlighted state */
+        .legend-item.highlighted {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateX(4px) ;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ============================================
+           CHECKBOX (color indicator)
+           ============================================ */
+        .legend-checkbox {
+            width: clamp(20px, 2vw, 30px);
+            height: clamp(20px, 2vw, 30px);
+            border-radius: 4px;
+            flex-shrink: 0;
+            /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); */
+            transition: all 0.3s ease;
+        }
+
+        .legend-item:hover .legend-checkbox {
+            transform: scale(1.0);
+            /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); */
+        }
+
+        .legend-item.highlighted .legend-checkbox {
+            transform: scale(1.0);
+            /* box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); */
+        }
+
+        /* ============================================
+           LABEL TEXT
+           ============================================ */
+        .legend-label {
+            flex: 1;
+            font-size: 3vw;
+            font-weight: 500;
+            color: #1a1a1a;
+            letter-spacing: 0.3px;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            line-height: 1.3;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .legend-item:hover .legend-label {
+            /* font-weight: 600; */
+            color: #000;
+        }
+
+        .legend-item.highlighted .legend-label {
+            /* font-weight: 700; */
+            color: #000;
+        }
+
+        /* ============================================
+           ANIMATIONS
+           ============================================ */
+        @keyframes pulse {
+            0%, 100% {
+                transform: translateX(4px);
+            }
+            50% {
+                transform: translateX(4px);
+            }
+        }
+
+        .legend-item.highlighted {
+            animation: pulse 0.6s ease-in-out;
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                /* opacity: 0; */
+                 transform: translateX(-100%)
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInFromTop {
+            from {
+                /* opacity: 0; */
+                /* transform: translateY(-50%) translateX(-30px); */
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        .desktop-legend-container {
+            animation: slideInFromLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes fadeInItem {
+            from {
+                /* opacity: 0; */
+                /* transform: translateX(-10px); */
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .legend-item {
+            animation: fadeInItem 0.4s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+            animation-delay: 0.1s;
+        }
+
+        @media (min-width: 600px) {
+            .desktop-legend-container{
+                max-width: 55vw;
+            }
+
+            .legend-label {
+                font-size: clamp(1vw, 2vw, 25px);
+            }
+        }
+
+        @media (min-width: 750px) {
+            .desktop-legend-container{
+                max-width: 50vw;
+            }
+
+            .legend-label {
+                font-size: clamp(1vw, 2vw, 25px);
+            }
+        }
+
+        @media (min-width: 850px) {
+            .desktop-legend-container{
+                max-width: 45vw;
+            }
+        }
+
+        @media (min-width: 10240px) {
+            .desktop-legend-container{
+                max-width: 40vw;
+            }
+        }
+
+        @media (min-width: 1600px) {
+            .desktop-legend-container{
+                max-width: 35vw;
+            }
+        }
+
+        @media (min-width: 2200px) {
+            .desktop-legend-container{
+                max-width: 30vw;
+            }
+        }
+
+
+        /* ============================================
+           RESPONSIVE BREAKPOINTS
+           ============================================ */
+
+        /* ────────────────────────────────────────────
+           TABLETS LANDSCAPE (1024px - 1366px)
+           iPad Pro, iPad Air, Surface Pro horizontal
+           MANTIENE lateral izquierda pero más compacta
+           ──────────────────────────────────────────── */
+        @media (max-width: 1366px) and (min-width: 1024px) {
+            /* .desktop-legend-container {
+                left: 24px;
+                width: clamp(200px, 22vw, 280px);
+                padding: 14px;
+                border-radius: 14px;
+            } */
+
+            .legend-items-wrapper {
+                gap: 6px;
+            }
+
+            .legend-item {
+                padding: 8px 10px;
+                gap: 10px;
+            }
+
+            /* .legend-checkbox {
+                width: 14px;
+                height: 14px;
+            } */
+
+            .legend-label {
+                /* font-size: clamp(13px, 1.4vw, 17px); */
+            }
+        }
+
+        /* ────────────────────────────────────────────
+           TABLETS PORTRAIT (768px - 1023px)
+           iPad vertical, tablets medianas
+           CAMBIA A HORIZONTAL ARRIBA (2 columnas)
+           ──────────────────────────────────────────── */
+        @media (max-width: 1023px) and (min-width: 768px) {
+            /* .desktop-legend-container {
+                left: 50%;
+                top: 20px;
+                transform: translateX(-50%);
+                
+
+                width: clamp(600px, 85vw, 700px);
+                max-width: calc(100vw - 40px);
+                
+                padding: 16px 20px;
+                border-radius: 16px;
+                
+
+                animation: slideInFromTop 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            /* Layout de 2 COLUMNAS */
+            .legend-items-wrapper {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 0 0;
+            }
+
+            .legend-item {
+                padding: 10px 12px;
+                gap: 10px;
+                margin: 0; /* Reset margin-bottom */
+            }
+
+            /* Ajustar hover para horizontal */
+            .legend-item:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+            }
+
+            .legend-item.highlighted {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            }
+
+            /* Animación pulse ajustada */
+            @keyframes pulse {
+                0%, 100% {
+                    transform: translateY(-3px) ;
+                }
+                50% {
+                    transform: translateY(-3px) ;
+                }
+            }
+
+            /* .legend-checkbox {
+                width: 16px;
+                height: 16px;
+            } */
+
+            .legend-label {
+                /* font-size: clamp(14px, 1.8vw, 17px); */
+            }
+
+            /* Ajustar animación de items para grid */
+            .legend-item {
+                animation: fadeInItem 0.4s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+            }
+            
+            .legend-item:nth-child(1),
+            .legend-item:nth-child(2) {
+                animation-delay: 0.05s;
+            }
+            
+            .legend-item:nth-child(3),
+            .legend-item:nth-child(4) {
+                animation-delay: 0.1s;
+            }
+            
+            .legend-item:nth-child(5),
+            .legend-item:nth-child(6) {
+                animation-delay: 0.15s;
+            }
+        }
+
+        /* ────────────────────────────────────────────
+           TABLETS PEQUEÑOS Y PHABLETS (600px - 767px)
+           iPad Mini, tablets pequeñas
+           HORIZONTAL ARRIBA más compacto
+           ──────────────────────────────────────────── */
+        @media (max-width: 767px) and (min-width: 600px) {
+            /* .desktop-legend-container {
+                left: 50%;
+                top: 16px;
+                transform: translateX(-50%);
+                
+                width: clamp(500px, 90vw, 600px);
+                max-width: calc(100vw - 32px);
+                
+                padding: 12px 16px;
+                border-radius: 14px;
+                
+                animation: slideInFromTop 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            } */
+
+            .legend-items-wrapper {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px 12px;
+            }
+
+            .legend-item {
+                padding: 8px 10px;
+                gap: 8px;
+            }
+
+            .legend-item:hover {
+                transform: translateY(-2px);
+            }
+
+            .legend-item.highlighted {
+                transform: translateY(-3px) scale(1.00);
+            }
+
+            /* .legend-checkbox {
+                width: 14px;
+                height: 14px;
+            } */
+
+            .legend-label {
+                /* font-size: clamp(13px, 2vw, 15px); */
+            }
+        }
+
+        /* ────────────────────────────────────────────
+           DESKTOP GRANDE (1367px - 1919px)
+           Laptops estándar, monitores normales
+           Lateral izquierda ESTÁNDAR
+           ──────────────────────────────────────────── */
+        @media (min-width: 1367px) and (max-width: 1919px) {
+            /* .desktop-legend-container {
+                left: 32px;
+                width: clamp(240px, 18vw, 340px);
+            } */
+        }
+
+        /* ────────────────────────────────────────────
+           ULTRAWIDE Y 4K (1920px+)
+           Mover hacia el centro para estar cerca de pirámide
+           ──────────────────────────────────────────── */
+        @media (min-width: 1920px) {
+            /* .desktop-legend-container {
+                left: calc(50px + ((100vw - 1920px) * 0.25));
+                width: clamp(280px, 16vw, 380px);
+            } */
+        }
+
+        @media (min-width: 2560px) {
+            /* .desktop-legend-container {
+                left: calc(80px + ((100vw - 2560px) * 0.2));
+                width: clamp(320px, 14vw, 400px);
+                padding: 20px;
+                border-radius: 18px;
+            } */
+
+            .legend-items-wrapper {
+                gap: 10px;
+            }
+
+            .legend-item {
+                padding: 12px 14px;
+                gap: 14px;
+            }
+
+            /* .legend-checkbox {
+                width: 18px;
+                height: 18px;
+            } */
+
+            .legend-label {
+                /* font-size: clamp(17px, 1.2vw, 20px); */
+            }
+        }
+
+        /* ────────────────────────────────────────────
+           LAPTOPS PEQUEÑOS (1024px altura reducida)
+           Ajustar padding vertical para no ocupar mucho
+           ──────────────────────────────────────────── */
+        @media (max-height: 768px) and (min-width: 1024px) {
+            /* .desktop-legend-container {
+                padding: 12px;
+                border-radius: 12px;
+            } */
+
+            .legend-items-wrapper {
+                gap: 5px;
+            }
+
+            .legend-item {
+                padding: 7px 10px;
+            }
+
+            /* .legend-checkbox {
+                width: 13px;
+                height: 13px;
+            } */
+
+            .legend-label {
+                /* font-size: clamp(13px, 1.3vw, 16px); */
+            }
+        }
+
+        /* ────────────────────────────────────────────
+           LANDSCAPE ULTRA COMPACTO (altura < 600px)
+           Para dispositivos muy anchos y bajos
+           ──────────────────────────────────────────── */
+        @media (max-height: 600px) and (orientation: landscape) {
+            /* .desktop-legend-container {
+                top: 12px;
+                transform: translateX(-50%);
+                left: 50%;
+                
+                width: auto;
+                max-width: 90vw;
+                padding: 10px 16px;
+            } */
+
+            .legend-items-wrapper {
+                display: grid;
+                grid-template-columns: repeat(6, 1fr);
+                gap: 8px;
+            }
+
+            .legend-item {
+                flex-direction: column;
+                padding: 8px 6px;
+                gap: 4px;
+                text-align: center;
+            }
+
+            /* .legend-checkbox {
+                width: 16px;
+                height: 16px;
+            } */
+
+            .legend-label {
+                /* font-size: 11px; */
+                white-space: normal;
+                line-height: 1.2;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="desktop-legend-container" id="desktopLegendContainer">
+        <div class="legend-items-wrapper" id="legendItemsWrapper">
+            <!-- Se generará dinámicamente desde JavaScript -->
+        </div>
+    </div>
+
+    <script>
+
+         class InfoModalTranslationSystem {
+            constructor() {
+                this.translations = {};
+                this.isReady = false;
+                this.currentLanguage = "DE";
+                
+                window.addEventListener('message', this.handleMessage.bind(this));
+                this.requestInitialTranslations();
+            }
+
+            handleMessage(event) {
+                const { type, data, language } = event.data;
+                
+                switch(type) {
+                    case 'bulk-translations':
+                        console.log(data);
+                        this.currentLanguage = language || this.currentLanguage;
+                        this.handleBulkTranslations(data);
+                        break;
+                    case 'language-changed':
+                        this.handleLanguageChange(data);
+                        break;
+                    case 'show-info-modal':
+                        showModal();
+                        break;
+                    case 'hide-info-modal':
+                        closeModal();
+                        break;
+                }
+            }
+
+            requestInitialTranslations() {
+                const translationKeys = this.getAllTranslationKeys();
+                
+                window.parent.postMessage({
+                    type: 'request-bulk-translations',
+                    keys: translationKeys
+                }, '*');
+            }
+
+            getAllTranslationKeys() {
+                const elements = document.querySelectorAll('[data-translate]');
+                return Array.from(elements).map(el => el.getAttribute('data-translate'));
+            }
+
+            handleBulkTranslations(translations) {
+                this.translations = translations.data || translations;
+                this.isReady = true;
+                this.applyTranslations();
+            }
+
+            applyTranslations() {
+                const elements = document.querySelectorAll('[data-translate]');
+                
+                elements.forEach((element) => {
+                    const key = element.getAttribute('data-translate');
+                    const translation = this.translations[key];
+                    
+                    if (translation && translation.trim() !== "") {
+                        element.textContent = translation;
+                    }
+                });
+            }
+
+            handleLanguageChange(newLanguage) {
+                this.requestInitialTranslations();
+            }
+        }
+
+        // Configuración de niveles - EXACTAMENTE igual que mobile
+        var levels = [
+            { key: "txt_layer_6_title", color: "#8ECDED", layer: 6 },
+            { key: "txt_layer_5_title", color: "#629DB8", layer: 5 },
+            { key: "txt_layer_4_title", color: "#438BAA", layer: 4 },
+            { key: "txt_layer_3_title", color: "#919E61", layer: 3 },
+            { key: "txt_layer_2_title", color: "#7F9328", layer: 2 },
+            { key: "txt_layer_1_title", color: "#687822", layer: 1 }
+        ];
+
+        var wrapper = document.getElementById('legendItemsWrapper');
+        var highlightTimeout = null;
+
+        // Función para obtener traducción
+
+        // Crear los items de la leyenda
+        function createLegendHTML() {
+            wrapper.innerHTML = '';
+            
+            levels.forEach(function(level) {
+                var item = document.createElement('div');
+                item.className = 'legend-item';
+                item.setAttribute('data-layer', level.layer);
+                
+                item.innerHTML = `
+                    <div class="legend-checkbox" style="background-color: ${level.color}"></div>
+                    <span class="legend-label" data-translate="${level.key}"></span>
+                `;
+                
+                // Click handler
+                item.addEventListener('click', function() {
+                    var layerNumber = parseInt(this.getAttribute('data-layer'));
+                    console.log('Desktop Legend: Layer clicked -', layerNumber);
+                    
+                    window.parent.postMessage({
+                        type: 'legendItemClicked',
+                        layerNumber: layerNumber
+                    }, '*');
+                });
+                
+                // HOVER handler
+                item.addEventListener('mouseenter', function() {
+                    var layerNumber = parseInt(this.getAttribute('data-layer'));
+                    console.log('Desktop Legend: Mouse enter nivel -', layerNumber);
+                    
+                    window.parent.postMessage({
+                        type: 'legendItemHover',
+                        layerNumber: layerNumber
+                    }, '*');
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    console.log('Desktop Legend: Mouse leave');
+                    
+                    window.parent.postMessage({
+                        type: 'legendItemHoverEnd'
+                    }, '*');
+                });
+                
+                wrapper.appendChild(item);
+            });
+
+            window.desktopLegendTranslationSystem.requestInitialTranslations();
+            
+            console.log('Desktop Legend: HTML creado con', levels.length, 'items');
+        }
+
+        // Highlight de nivel
+        function highlightLevel(layerNumber) {
+            console.log('Desktop Legend: Resaltando nivel', layerNumber);
+            
+            var previousHighlighted = document.querySelectorAll('.legend-item.highlighted');
+            previousHighlighted.forEach(function(item) {
+                item.classList.remove('highlighted');
+            });
+            
+            var targetItem = document.querySelector('.legend-item[data-layer="' + layerNumber + '"]');
+            if (targetItem) {
+                targetItem.classList.add('highlighted');
+            }
+        }
+
+        function clearHighlight() {
+            console.log('Desktop Legend: Quitando resaltado');
+            
+            var highlighted = document.querySelectorAll('.legend-item.highlighted');
+            highlighted.forEach(function(item) {
+                item.classList.remove('highlighted');
+            });
+        }
+
+        // Actualizar traducciones
+        function updateLanguage() {
+            console.log('Desktop Legend: Actualizando idioma');
+            createLegendHTML();
+        }
+
+        // Inicializar
+        function initialize() {
+
+            createLegendHTML();
+            
+            window.addEventListener('message', function(event) {
+                console.log('📨 Desktop Legend HTML: Mensaje recibido ->', event.data.type);
+                
+                if (event.data.type === 'updateTranslationTexts') {
+                    updateLanguage();
+                } else if (event.data.type === 'desktopLegendHighlight') {
+                    console.log('✅ Llamando highlightLevel con:', event.data.layerNumber);
+                    highlightLevel(event.data.layerNumber);
+                } else if (event.data.type === 'desktopLegendClearHighlight') {
+                    console.log('🧹 Llamando clearHighlight');
+                    clearHighlight();
+                }
+            });
+            
+            console.log('Desktop Legend: Inicializado correctamente');
+            
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            window.desktopLegendTranslationSystem = new InfoModalTranslationSystem();
+            initialize();
+        });
+    </script>
+</body>
+
+</html>

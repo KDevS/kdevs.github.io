@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leadership-Pyramide Info</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            overflow: hidden;
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Modal Container - Diseño Profesional */
+        .modal-container {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafb 100%);
+            border-radius: 24px;
+            padding: 40px 38px;
+            max-width: 580px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(104, 139, 152, 0.1);
+            position: relative;
+            transform: scale(0.92);
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .modal-overlay.active .modal-container {
+            transform: scale(1);
+        }
+
+        /* Header Section - SIN línea decorativa */
+        .modal-header {
+            position: relative;
+            margin-bottom: 30px;
+            padding-bottom: 0;
+        }
+
+        /* Close Button - Más Elegante */
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(104, 139, 152, 0.1);
+            border: 1px solid rgba(104, 139, 152, 0.2);
+            color: #688B98;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+            font-weight: 300;
+        }
+
+        .close-btn:hover {
+            background: rgba(104, 139, 152, 0.15);
+            border-color: rgba(104, 139, 152, 0.3);
+            transform: scale(1.05);
+        }
+
+        /* Modal Title - Más Prominente */
+        .modal-title {
+            color: #2c3e50;
+            font-size: 1.95rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
+        }
+
+        /* Modal Intro - Mejorado */
+        .modal-intro {
+            color: #5a6c7d;
+            font-size: 1.05rem;
+            line-height: 1.65;
+            font-weight: 400;
+        }
+
+        /* Instructions List */
+        .instructions-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 28px;
+            margin-bottom: 25px;
+        }
+
+        /* Instruction Cards - Más compactos */
+        .instruction-item {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 16px 18px;
+            box-shadow:
+                0 2px 8px rgba(0, 0, 0, 0.06),
+                0 1px 3px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(104, 139, 152, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .instruction-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #688B98, #7ba3b3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .instruction-item:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                0 8px 20px rgba(104, 139, 152, 0.15),
+                0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .instruction-item:hover::before {
+            opacity: 1;
+        }
+
+        .instruction-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        /* Icon Badge - Más compacto */
+        .instruction-icon {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, #688B98, #7ba3b3);
+            border-radius: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(104, 139, 152, 0.25);
+        }
+
+        .instruction-title {
+            color: #2c3e50;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .instruction-text {
+            color: #5a6c7d;
+            font-size: 0.93rem;
+            line-height: 1.55;
+            padding-left: 50px;
+            font-weight: 400;
+        }
+
+        /* Footer Section - SIN borde lateral */
+        .modal-footer {
+            color: #5a6c7d;
+            font-size: 0.95rem;
+            font-style: italic;
+            line-height: 1.7;
+            padding: 18px 22px;
+            background: rgba(104, 139, 152, 0.05);
+            border-radius: 12px;
+            font-weight: 400;
+        }
+
+        /* Scrollbar Styling - Más Elegante */
+        .modal-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .modal-container::-webkit-scrollbar-track {
+            background: transparent;
+            border-radius: 10px;
+        }
+
+        .modal-container::-webkit-scrollbar-thumb {
+            background: rgba(104, 139, 152, 0.3);
+            border-radius: 10px;
+        }
+
+        .modal-container::-webkit-scrollbar-thumb:hover {
+            background: rgba(104, 139, 152, 0.5);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .modal-container {
+                padding: 35px 28px;
+                max-height: 88vh;
+                border-radius: 20px;
+            }
+
+            .modal-title {
+                font-size: 1.65rem;
+                margin-bottom: 12px;
+                padding-right: 35px;
+            }
+
+            .modal-intro {
+                font-size: 1rem;
+            }
+
+            .instruction-icon {
+                width: 38px;
+                height: 38px;
+                font-size: 18px;
+            }
+
+            .instruction-title {
+                font-size: 1.05rem;
+            }
+
+            .instruction-text {
+                font-size: 0.9rem;
+                padding-left: 52px;
+            }
+
+            .close-btn {
+                width: 38px;
+                height: 38px;
+                font-size: 20px;
+                top: 18px;
+                right: 18px;
+            }
+
+            .modal-footer {
+                padding: 18px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .modal-overlay {
+                padding: 15px;
+            }
+
+            .modal-container {
+                padding: 30px 22px;
+                border-radius: 18px;
+            }
+
+            .modal-title {
+                font-size: 1.45rem;
+            }
+
+            .instructions-list {
+                gap: 14px;
+            }
+
+            .instruction-item {
+                padding: 16px 18px;
+                border-radius: 14px;
+            }
+
+            .instruction-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 16px;
+                border-radius: 10px;
+            }
+
+            .instruction-text {
+                padding-left: 50px;
+            }
+        }
+
+        /* Animation */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-overlay.active .instruction-item {
+            animation: slideInUp 0.4s ease forwards;
+        }
+
+        .modal-overlay.active .instruction-item:nth-child(1) {
+            animation-delay: 0.05s;
+        }
+
+        .modal-overlay.active .instruction-item:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .modal-overlay.active .instruction-item:nth-child(3) {
+            animation-delay: 0.15s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-container">
+            <button class="close-btn" onclick="closeModal()">×</button>
+
+            <div class="modal-header">
+                <h1 class="modal-title" data-translate="info_modal_title">Die Leadership-Pyramide</h1>
+                <p class="modal-intro" data-translate="info_modal_intro">
+                    Die Leadership Map zeigt sechs Ebenen der Führung - von Sinn (Fundament) bis Lead übernehmen
+                    (Spitze).
+                </p>
+            </div>
+
+            <div class="instructions-list">
+                <div class="instruction-item">
+                    <div class="instruction-header">
+                        <div class="instruction-icon">🔄</div>
+                        <div class="instruction-title" data-translate="info_modal_step1_title">Pyramide drehen</div>
+                    </div>
+                    <div class="instruction-text" data-translate="info_modal_step1_text">
+                        Bewegen Sie die Pyramide, um alle Seiten zu sehen
+                    </div>
+                </div>
+
+                <div class="instruction-item">
+                    <div class="instruction-header">
+                        <div class="instruction-icon">📂</div>
+                        <div class="instruction-title" data-translate="info_modal_step2_title">Ebene öffnen</div>
+                    </div>
+                    <div class="instruction-text" data-translate="info_modal_step2_text">
+                        Wählen Sie eine Ebene, um Inhalte und Praxisbeispiele anzuzeigen
+                    </div>
+                </div>
+
+                <div class="instruction-item">
+                    <div class="instruction-header">
+                        <div class="instruction-icon">🔍</div>
+                        <div class="instruction-title" data-translate="info_modal_step3_title">Inhalte erkunden</div>
+                    </div>
+                    <div class="instruction-text" data-translate="info_modal_step3_text">
+                        Nutzen Sie die Icons für detaillierte Informationen
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer" data-translate="info_modal_footer">
+                Nutzen Sie die Ebenen als Orientierung für Ihre Reflexion und Entwicklung.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Translation System
+        class InfoModalTranslationSystem {
+            constructor() {
+                this.translations = {};
+                this.isReady = false;
+                this.currentLanguage = "DE";
+                
+                window.addEventListener('message', this.handleMessage.bind(this));
+                this.requestInitialTranslations();
+            }
+
+            handleMessage(event) {
+                const { type, data, language } = event.data;
+                
+                switch(type) {
+                    case 'bulk-translations':
+                        this.currentLanguage = language || this.currentLanguage;
+                        this.handleBulkTranslations(data);
+                        break;
+                    case 'language-changed':
+                        this.handleLanguageChange(data);
+                        break;
+                    case 'show-info-modal':
+                        showModal();
+                        break;
+                    case 'hide-info-modal':
+                        closeModal();
+                        break;
+                }
+            }
+
+            requestInitialTranslations() {
+                const translationKeys = this.getAllTranslationKeys();
+                
+                window.parent.postMessage({
+                    type: 'request-bulk-translations',
+                    keys: translationKeys
+                }, '*');
+            }
+
+            getAllTranslationKeys() {
+                const elements = document.querySelectorAll('[data-translate]');
+                return Array.from(elements).map(el => el.getAttribute('data-translate'));
+            }
+
+            handleBulkTranslations(translations) {
+                this.translations = translations.data || translations;
+                this.isReady = true;
+                this.applyTranslations();
+            }
+
+            applyTranslations() {
+                const elements = document.querySelectorAll('[data-translate]');
+                
+                elements.forEach((element) => {
+                    const key = element.getAttribute('data-translate');
+                    const translation = this.translations[key];
+                    
+                    if (translation && translation.trim() !== "") {
+                        element.textContent = translation;
+                    }
+                });
+            }
+
+            handleLanguageChange(newLanguage) {
+                this.requestInitialTranslations();
+            }
+        }
+
+        // Modal Functions
+        function showModal() {
+            const overlay = document.getElementById('modalOverlay');
+            overlay.classList.add('active');
+        }
+
+        function closeModal() {
+            const overlay = document.getElementById('modalOverlay');
+            overlay.classList.remove('active');
+            
+            window.parent.postMessage({
+                type: 'info-modal-closed'
+            }, '*');
+        }
+
+        // Escape key handler
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Click outside to close
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            window.infoModalTranslation = new InfoModalTranslationSystem();
+        });
+    </script>
+</body>
+
+</html>

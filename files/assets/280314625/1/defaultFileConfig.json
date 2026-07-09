@@ -1,0 +1,107 @@
+{
+    "translation" : {
+        "languages" : ["DE", "FR"],
+        "files" : {
+            "DE" : "",
+            "FR" : ""
+        },
+        "images" : {
+            "DE" : {
+                "Layer-1-Handelsspielraum-QR" : "",
+                "Layer-1-Standortcheck-QR" : "",
+                "Layer-1-UmgangMitFehlern-QR" : "", 
+                "Layer-4-Image-Scale" : "",
+                "Layer-4-Quadrant" : "",
+                "Fist-to-Five-0" : "",
+                "Fist-to-Five-1" : "",
+                "Fist-to-Five-2" : "",
+                "Fist-to-Five-3" : "",
+                "Fist-to-Five-4" : "",
+                "Fist-to-Five-5" : ""
+            },
+            "FR" : {
+                "Layer-1-Handelsspielraum-QR" : "",
+                "Layer-1-Standortcheck-QR" : "",
+                "Layer-1-UmgangMitFehlern-QR" : "", 
+                "Layer-4-Image-Scale" : "",
+                "Layer-4-Quadrant" : "",
+                "Fist-to-Five-0" : "",
+                "Fist-to-Five-1" : "",
+                "Fist-to-Five-2" : "",
+                "Fist-to-Five-3" : "",
+                "Fist-to-Five-4" : "",
+                "Fist-to-Five-5" : ""
+            }
+        },
+        "videos" : {
+            "DE" : {
+                "Layer-1-Video" : "",
+                "Layer-2-Video" : "",
+                "Layer-3-Video" : "",
+                "Layer-4-Video" : "",
+                "Layer-5-Video" : "",
+                "Layer-6-Video" : ""
+            },
+            "FR" : {
+                "Layer-1-Video" : "",
+                "Layer-2-Video" : "",
+                "Layer-3-Video" : "",
+                "Layer-4-Video" : "",
+                "Layer-5-Video" : "",
+                "Layer-6-Video" : ""
+            }
+        }
+    },
+    "content" : {
+        "Layer-1-LeadershipHacks-LeadershipReady" : "",
+        "Layer-1-Abstract" : "",
+        "Layer-1-DeepDive" : "",
+        "Layer-1-Video" : "",
+        "Layer-2-LeadershipHacks-LeadershipReady" : "",
+        "Layer-2-Abstract" : "",
+        "Layer-2-DeepDive" : "",
+        "Layer-2-Video" : "",
+        "Layer-3-LeadershipHacks-LeadershipReady" : "",
+        "Layer-3-Abstract" : "",
+        "Layer-3-DeepDive" : "",
+        "Layer-3-Video" : "",
+        "Layer-4-LeadershipHacks-BalancedLife" : "",
+        "Layer-4-LeadershipHacks-StayOrganized" : "",
+        "Layer-4-LeadershipHacks-BuildHabits" : "",
+        "Layer-4-LeadershipHacks-EndGoalFocus" : "",
+        "Layer-4-LeadershipHacks-PrioritiesFirst" : "",
+        "Layer-4-Abstract" : "",
+        "Layer-4-DeepDive" : "",
+        "Layer-4-Video" :  "",
+        "Layer-5-LeadershipHacks-FiveWhyMethod" : "",
+        "Layer-5-LeadershipHacks-FistToFive" : "",
+        "Layer-5-LeadershipHacks-ThinkAloud" : "",
+        "Layer-5-LeadershipHacks-LeadWithQuestions" : "",
+        "Layer-5-LeadershipHacks-ConsentDecisions" : "",
+        "Layer-5-Abstract" : "",
+        "Layer-5-DeepDive" : "",
+        "Layer-5-Video" : "",
+        "Layer-6-LeadershipHacks-IntentionSetting" : "",
+        "Layer-6-LeadershipHacks-EfficientMeetings" : "",
+        "Layer-6-LeadershipHacks-EarlyPitstops" : "",
+        "Layer-6-LeadershipHacks-RequestFeedback" : "",
+        "Layer-6-LeadershipHacks-OpenCommunication" : "",
+        "Layer-6-Abstract" : "",
+        "Layer-6-DeepDive" : "",
+        "Layer-6-Video" : ""
+    },
+    "submenus" : {
+        "Layer-1-LeadershipHacks-Submenu" : "",
+        "Layer-2-LeadershipHacks-Submenu" : "",
+        "Layer-3-LeadershipHacks-Submenu" : "",
+        "Layer-4-LeadershipHacks-Submenu" : "",
+        "Layer-5-LeadershipHacks-Submenu" : "",
+        "Layer-6-LeadershipHacks-Submenu" : ""
+    },
+    "legend" : {
+        "file" : ""
+    },
+    "infoModal" : {
+        "file" : ""
+    }
+}

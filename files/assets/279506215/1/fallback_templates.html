@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{TITLE}} - Level {{LEVEL}}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, {{COLOR}} 0%, {{COLOR}}CC 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: fadeInUp 0.6s ease;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid {{COLOR}};
+        }
+        
+        .level-badge {
+            background: {{COLOR}};
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .title {
+            font-size: 2.5em;
+            font-weight: 300;
+            color: {{COLOR}};
+            margin: 0;
+        }
+        
+        .content {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #555;
+            text-align: center;
+        }
+        
+        .submenu-container {
+            max-width: 600px; 
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .submenu-body {
+            background: linear-gradient(135deg, {{COLOR}} 0%, {{COLOR_DARK}} 100%);
+            color: white;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .main-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 0;
+        }
+        
+        .menu-grid { 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 12px; 
+            margin-top: 20px;
+            flex-shrink: 0;
+        }
+        
+        .menu-item {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            animation: slideInUp 0.6s ease forwards;
+            opacity: 0;
+            transform: translateY(30px);
+            min-height: 70px;
+        }
+        
+        .menu-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        
+        .tool-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+        
+        .menu-text { 
+            flex: 1; 
+        }
+        
+        .menu-text h3 { 
+            margin: 0; 
+            font-size: 1.2em; 
+            font-weight: 500;
+            line-height: 1.3;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 20px;
+            }
+            
+            .title {
+                font-size: 2em;
+            }
+            
+            .content {
+                font-size: 1.1em;
+            }
+        }
+        
+        @media (max-height: 600px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .menu-item {
+                padding: 15px;
+                min-height: 60px;
+            }
+            
+            .tool-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+            
+            .menu-text h3 {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body class="{{BODY_CLASS}}">
+    <div class="{{CONTAINER_CLASS}}">
+        <div class="header">
+            <div class="level-badge">{{LEVEL_TEXT}}</div>
+            <h1 class="title">{{TITLE}}</h1>
+        </div>
+        <div class="content">
+            {{CONTENT}}
+        </div>
+        {{MENU_ITEMS}}
+    </div>
+</body>
+</html>
